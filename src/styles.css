@@ -1,0 +1,56 @@
+:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #262623; background: #f8f6f1; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 3px solid #ad733f; outline-offset: 3px; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+a { color: #744b37; }
+.shell { min-height: 100vh; display: flex; flex-direction: column; }
+.site-header { display: flex; align-items: center; justify-content: space-between; padding: 18px max(24px, calc((100vw - 1120px) / 2)); background: white; }
+.wordmark { border: 0; background: transparent; color: #32332e; font-size: 29px; font-weight: 800; letter-spacing: -.07em; }
+.wordmark span { color: #c47755; }
+nav { display: flex; gap: 8px; }
+nav button { background: transparent; border: 1px solid transparent; padding: 9px 15px; border-radius: 24px; }
+nav button.active, nav button:hover { border-color: #d8c7ba; background: #f8f2eb; }
+.demo-banner { background: #efe4d6; padding: 10px 24px; text-align: center; font-size: 13px; }
+main { width: min(1120px, calc(100% - 40px)); margin: 0 auto; flex: 1; }
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 72px; align-items: center; min-height: 620px; padding: 60px 0; }
+h1 { font-family: Georgia, serif; font-size: clamp(42px, 5vw, 68px); font-weight: 500; line-height: 1.06; letter-spacing: -.045em; margin: 16px 0 24px; }
+h2 { font-family: Georgia, serif; font-size: 31px; font-weight: 500; }
+p { line-height: 1.6; }
+.eyebrow { text-transform: uppercase; letter-spacing: .15em; font-size: 12px; font-weight: 700; color: #a66443; }
+.lead { font-size: 20px; max-width: 560px; color: #5d5e58; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
+.primary, .secondary { display: inline-block; border-radius: 8px; border: 1px solid #32332e; padding: 12px 18px; }
+.primary { background: #32332e; color: white; }
+.secondary { background: transparent; color: #32332e; }
+.small { font-size: 13px; color: #6b6b66; }
+.preview-card { min-height: 420px; border-radius: 180px 180px 12px 12px; background: #edd9c6; text-align: center; padding: 112px 30px 35px; box-shadow: 18px 22px 0 #e8e7df; }
+.preview-card h2 { font-size: 48px; margin-bottom: 8px; }
+.ribbon { background: #fffaf5; margin: 65px -30px 0; padding: 22px; font-family: Georgia, serif; font-size: 22px; }
+.layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 50px 0; }
+.panel { background: white; padding: 32px; border: 1px solid #e7e0d8; border-radius: 16px; }
+.panel h1 { font-size: 42px; }
+.panel label:not(.checkbox) { display: block; font-weight: 650; margin: 26px 0 8px; }
+textarea { width: 100%; border: 1px solid #bfb8b1; border-radius: 8px; padding: 12px; resize: vertical; }
+.samples { display: grid; gap: 9px; padding-top: 10px; }
+.samples button { text-align: left; border: 1px solid #ded3c6; background: #fff9f2; border-radius: 8px; padding: 12px; }
+.service-list { display: flex; gap: 8px; flex-wrap: wrap; }
+.service-list button { padding: 10px 13px; border: 1px solid #d9cfc5; border-radius: 8px; background: white; }
+.service-list .selected { border-color: #914f35; background: #f6e9dc; }
+.destination { margin: 24px 0; background: #f6f2eb; padding: 16px 20px; border-radius: 8px; }
+.destination p { margin: 0 0 8px; }
+.destination dl { display: grid; grid-template-columns: 115px 1fr; gap: 7px; }
+.destination dt { color: #65655e; }
+.destination dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.checkbox { display: flex; gap: 9px; align-items: start; margin: 22px 0; }
+.checkbox input { margin-top: 5px; }
+.host-panel { margin: 50px auto; max-width: 850px; }
+.host-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+.host-grid div { border: 1px solid #eee4d9; border-radius: 8px; padding: 18px; }
+.host-grid span, .host-grid strong { display: block; overflow-wrap: anywhere; }
+.host-grid span { font-size: 13px; margin-bottom: 10px; color: #777; }
+.link-button { text-decoration: none; }
+footer { text-align: center; color: #777; padding: 32px 20px; font-size: 13px; }
+@media (max-width: 760px) { .hero, .layout { grid-template-columns: 1fr; gap: 30px; } .hero { padding: 45px 0; } .preview-card { min-height: 350px; padding-top: 75px; } .host-grid { grid-template-columns: 1fr; } .panel { padding: 23px; } .site-header { padding: 15px 20px; } }

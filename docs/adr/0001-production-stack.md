@@ -1,0 +1,20 @@
+# ADR 0001 Production application stack
+
+**Status:** Open. **Decision deadline:** 14 October 2026. **Owner:** developer.
+
+## Context
+
+The developer knows React but has not used Next.js. A working private MVP is targeted for October 31. This repository starts with React, Vite and a static clickable concept to avoid delaying UI and user-flow work.
+
+## Options
+
+1. Next.js TypeScript application with server route handlers and a small worker. It colocates pages and API endpoints, but requires learning server/client boundaries and a Cloudflare Workers deployment adapter if Cloudflare is chosen.
+2. React with Vite on Cloudflare Pages plus Pages Functions or a Worker for the API. It reuses familiar React and has a straightforward static preview, but requires explicit routing and server API composition.
+
+## Decision rule
+
+By October 14, implement a short spike: authenticated host request, protected event read, one server secret and a preview deployment. Pick the approach that passes this spike with the least integration and debugging work. Keep one GitHub repository either way. Record the chosen runtime, database, authentication provider, deployment method and rollback in this ADR. Do not place secrets or event-window policy in the React browser.
+
+## Consequences
+
+The local starter is a UI demo and can be refactored into either option. Domain contracts in `docs/specs` are authoritative; route handlers and Functions are transport adapters. Full Next.js APIs do not run in a static export.
