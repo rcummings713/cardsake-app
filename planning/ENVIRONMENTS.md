@@ -17,10 +17,21 @@ Preview links and the exact deployed SHA appear in the Actions run and GitHub en
 
 The existing local Wrangler session can deploy Workers, but Cloudflare returned HTTP 403 for API-token management and Workers Builds management. The account owner must complete these settings:
 
-1. Create a Cloudflare API token using the **Edit Cloudflare Workers** template, restricted to this account. Store it directly as `CLOUDFLARE_API_TOKEN` in each GitHub environment, DEV, TEST and PROD. Tokens can be distinct; keep their values out of chat, source files and command arguments.
+1. Create three distinct account-owned API tokens using **Start from scratch**, with the policy scope **Specified Workers**. Select the Worker below and check **Developer Platform → Individual Workers → Editor** only. Store each token directly as `CLOUDFLARE_API_TOKEN` in its matching GitHub environment. Keep token values out of chat, source files and command arguments.
+
+   | GitHub environment | Token name | Selected Worker |
+   | --- | --- | --- |
+   | DEV | DigitalCardBox DEV Deployments | `digitalcardbox-app-dev` |
+   | TEST | DigitalCardBox TEST Deployments | `digitalcardbox-app-test` |
+   | PROD | DigitalCardBox PROD Deployments | `digitalcardbox-app` |
+
+   Review each token before creation: it must list only the selected Worker with **Individual Workers Editor**. The broad Edit Cloudflare Workers template grants account-wide access to unrelated projects and routes; do not use that template for this setup. No Entire Account, domain, Pages, KV, R2, Containers, or Workers CI policy is required for the current static deployment. Leave optional IP filtering empty for GitHub-hosted runners; the initial tokens use No expiration. Worker-specific tokens cannot provision new Workers: the three targets already exist. See [Cloudflare's Worker scope and role documentation](https://developers.cloudflare.com/workers/authorization/workers/).
+
 2. Disable the existing Worker's Git-connected automatic builds in Cloudflare. Keep `digitalcardbox-app` and its existing URL running. GitHub Actions must be the only automatic production deployment path.
 
-Each GitHub environment already has the public `CLOUDFLARE_ACCOUNT_ID` variable. The CI workflow checks for credentials and stops with a clear error if they are missing. The Cloudflare OAuth token used on this Mac is never copied into GitHub Secrets.
+Each GitHub environment already has the public `CLOUDFLARE_ACCOUNT_ID` variable. Keep it as a variable; the separate API token is an environment secret. The CI workflow checks for credentials and stops with a clear error if they are missing. The Cloudflare OAuth token used on this Mac is never copied into GitHub Secrets.
+
+On 13 October 2026 the owner installed the three Worker-specific tokens. Retrying the existing [DEV run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38434931406) and [TEST run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38436361400) succeeded. Live checks verified the feature UI, contact addresses, logo, and deep links, and confirmed that production's active version remained unchanged. A temporary release branch also passed Build and Deploy TEST ([run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38479641570)), verifying TEST preview delivery with its restricted token; no PROD job was selected. The legacy Cloudflare Git build connection still requires owner disconnection; production deployment remains subject to the owner's own approval.
 
 ## Daily work
 
@@ -35,6 +46,6 @@ Use Actions **Re-run jobs** after adding missing credentials or resolving a tran
 
 ## Validation and recovery
 
-Run `node --test scripts/deployment-plan.test.mjs`, `npm run build`, and `npm run check:planning` before merging. The pipeline pins its actions and Wrangler version, deploys the checked build artifact, and serializes deployment updates. Branch-routing tests cover unsupported refs, tags, PR events, nested names, shell-sensitive characters, and preview-name collisions.
+Run `node --test scripts/deployment-plan.test.mjs`, `npm run build`, and `npm run check:planning` before merging. The pipeline pins its actions and Wrangler version, deploys the checked build artifact, and serializes deployment updates. Deleted-branch push events skip jobs so the default-branch fallback cannot select a production deployment. Branch-routing tests cover unsupported refs, tags, PR events, nested names, shell-sensitive characters, and preview-name collisions.
 
 For an application rollback, revert the problematic production change on master through a PR, let Build pass, and approve the rollback deployment. Keep the deployed SHA/version in the incident note. Domain and database release checks remain required when those implementations are introduced.
