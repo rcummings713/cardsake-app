@@ -1,0 +1,42 @@
+@import url("/brand-font.css");
+/* Margot: https://support.17thavenuedesigns.com/article/625-margot-color-font-guide */
+@font-face { font-family: "Forum"; src: url("/fonts/forum.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Hanken Grotesk"; src: url("/fonts/hankengrotesk.ttf") format("truetype"); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Montserrat"; src: url("/fonts/montserrat.ttf") format("truetype"); font-weight: 400 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "La Belle Aurore"; src: url("/fonts/labelleaurore.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+:root {
+  --blush: #f9f3f2;
+  --pink-light: #eadcd9;
+  --pink-medium: #dfcac4;
+  --pink-dark: #caa79e;
+  --ink: #222222;
+  --muted: #6e5f5c;
+  --font-heading: "Forum", Georgia, serif;
+  --font-body: "Hanken Grotesk", Arial, sans-serif;
+  --font-label: "Montserrat", Arial, sans-serif;
+  --font-script: "Miss Noteworthy", "La Belle Aurore", cursive;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--blush);
+  font-synthesis: none;
+}
+
+/* Display the supplied artwork intact, with the screenshot framing outside the viewport. */
+.brand-logo {
+  display: inline-block;
+  position: relative;
+  width: min(360px, calc(100vw - 48px));
+  aspect-ratio: 900 / 445;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.brand-logo img {
+  display: block;
+  position: absolute;
+  width: 131%;
+  max-width: none;
+  height: auto;
+  left: -15.5%;
+  top: -18%;
+}
+.brand-logo-compact { width: min(220px, calc(100vw - 64px)); }

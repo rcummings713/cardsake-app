@@ -17,6 +17,8 @@ By October 14, implement a short spike: authenticated host request, protected ev
 
 ## Consequences
 
+[ADR 0005](0005-database-design.md) selects managed PostgreSQL independently of this open runtime choice. The spike must exercise an authenticated customer lookup, a short multi-statement transaction through the deployed adapter, and migration/restore support. Evaluate Supabase first, consistent with the financial reference; record provider, supported version, pooling/caching configuration and identity integration here when the spike passes. DCB-E18 tracks installation; static hosting does not supply it.
+
 The local starter is a UI demo and can be refactored into either option. Domain contracts in `docs/specs` are authoritative; route handlers and Functions are transport adapters. Full Next.js APIs do not run in a static export.
 
 The current Cloudflare Worker preview serves built static demo assets only. Its `wrangler.jsonc` enables that sample deployment and branch previews; it provides no host authentication or server validation and does not resolve this production-stack decision.

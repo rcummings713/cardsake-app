@@ -1,0 +1,14 @@
+/*
+  The reference uses the commercial Miss Noteworthy script font.
+  When a licensed webfont is available, place it in public/fonts and add:
+
+  @font-face {
+    font-family: "Miss Noteworthy";
+    src: url("/fonts/miss-noteworthy.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  Until then, the open-license La Belle Aurore is the explicit fallback.
+*/

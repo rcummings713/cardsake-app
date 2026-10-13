@@ -67,6 +67,10 @@ def body(item, epic=None):
         else:
             parts += ["**Target:** Post-MVP; no date committed"]
         parts += ["**Release:** " + item["release"], "**Priority:** " + item["priority"]]
+        if item.get('depends_on'):
+            parts += ["", "**Blocked by:** " + ", ".join(item['depends_on'])]
+        if item['id'].startswith('DCB-E18'):
+            parts += ["", "**Design:** docs/specs/DATA_MODEL.md and docs/adr/0005-database-design.md."]
     else:
         parts += ["## Outcome", item["outcome"], "", "**Release:** " + item["release"],
                   "Complete the child stories and verify the release gates in docs/specs/MVP_ACCEPTANCE.md."]
