@@ -1,6 +1,6 @@
 # ADR 0006 DEV, TEST and PROD deployment workflow
 
-**Status:** Accepted configuration; Worker-specific CI tokens installed and DEV/TEST deployments verified. Legacy Cloudflare Git-build disconnection remains a cutover prerequisite.
+**Status:** Accepted and configured; Worker-specific CI tokens installed, DEV/TEST deployments verified, and legacy Git-build disconnection confirmed by the owner. PROD deployment requires the owner's own approval.
 **Date:** 13 October 2026. **Owner:** rcummings713, sole repository contributor.
 
 ## Decision
@@ -26,7 +26,7 @@ Master requires a pull request and the Build check, with **zero required PR revi
 
 Preserve the existing customer URL and application source when installing the pipeline. Bootstrap `master` from the current production history, separately from the feature UI work, make it the default branch, and create `develop` from that bootstrap source. Retain the old `main` branch as a frozen legacy reference during the Cloudflare build-integration cutover. Keep future feature UI changes off master until release promotion.
 
-GitHub environments hold the account ID variable and environment secret `CLOUDFLARE_API_TOKEN`. Cloudflare's current local OAuth session is not an appropriate long-lived CI credential. The existing Git-connected Cloudflare automatic builds must be disabled so they cannot bypass the GitHub PROD approval. Do not delete or disable the live Worker.
+GitHub environments hold the account ID variable and environment secret `CLOUDFLARE_API_TOKEN`. Cloudflare's current local OAuth session is not an appropriate long-lived CI credential. The existing Git-connected Cloudflare automatic builds must be disabled so they cannot bypass the GitHub PROD approval. Do not delete or disable the live Worker. The owner confirmed this repository disconnection was completed. The local OAuth session cannot independently read Workers Builds configuration (HTTP 403), so the cutover record relies on that dashboard confirmation.
 
 Workers, preview URLs and deployment targets are separate. This static setup adds no database, authentication, private storage, AI secret or live payment route. Future bindings and PostgreSQL instances must be explicitly scoped to the environment under DATA_MODEL.md and ADR 0005. Use three distinct account-owned API tokens scoped through Specified Workers / Individual Workers Editor to the matching existing DEV, TEST or PROD Worker. Cloudflare supports individual Worker scopes; distinct GitHub secret slots alone do not restrict an account-wide token. No whole-account or zone policy is granted for this static setup. The broad Edit Cloudflare Workers template is inappropriate when other projects share the account. Creating additional Workers or adding custom domain routes requires a separate, explicitly scoped setup action; it is not permission granted to the current deployment tokens. Only trusted branch pushes deploy, and pull requests never receive deployment secrets.
 
