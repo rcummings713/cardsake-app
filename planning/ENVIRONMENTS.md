@@ -46,6 +46,6 @@ Use Actions **Re-run jobs** after adding missing credentials or resolving a tran
 
 ## Validation and recovery
 
-Run `node --test scripts/deployment-plan.test.mjs`, `npm run build`, and `npm run check:planning` before merging. The pipeline pins its actions and Wrangler version, deploys the checked build artifact, and serializes deployment updates. Branch-routing tests cover unsupported refs, tags, PR events, nested names, shell-sensitive characters, and preview-name collisions.
+Run `node --test scripts/deployment-plan.test.mjs`, `npm run build`, and `npm run check:planning` before merging. The pipeline pins its actions and Wrangler version, deploys the checked build artifact, and serializes deployment updates. Deleted-branch push events skip jobs so the default-branch fallback cannot select a production deployment. Branch-routing tests cover unsupported refs, tags, PR events, nested names, shell-sensitive characters, and preview-name collisions.
 
 For an application rollback, revert the problematic production change on master through a PR, let Build pass, and approve the rollback deployment. Keep the deployed SHA/version in the incident note. Domain and database release checks remain required when those implementations are introduced.

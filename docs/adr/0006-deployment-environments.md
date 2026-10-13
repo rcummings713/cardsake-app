@@ -14,7 +14,7 @@ Keep one GitHub repository and use GitHub Actions to build and route static UI d
 | `release/` prefix, including nested branch names | TEST | A named preview under `digitalcardbox-app-test` |
 | `master` | PROD | Existing `digitalcardbox-app` Worker, after the owner's manual approval |
 
-Other branches, pull request events and tags build without deployment. Hash-qualified preview names prevent similar, long or nested branch names from colliding or entering shell commands. PROD's GitHub environment permits only the `master` branch.
+Other branches, pull request events and tags build without deployment. Deleted-branch push events skip jobs so the default-branch fallback cannot select a production deployment. Hash-qualified preview names prevent similar, long or nested branch names from colliding or entering shell commands. PROD's GitHub environment permits only the `master` branch.
 
 Promote a tested release by merging it into `master`, then approving the PROD deployment. Master holds approved production source; the recorded deployment commit/version identifies what is actually live while a build or approval is pending. An outdated approval must fail when `master` has moved. A checked build artifact is passed to deployment rather than rebuilt after approval.
 

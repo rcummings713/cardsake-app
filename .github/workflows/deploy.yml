@@ -13,6 +13,7 @@ permissions:
 jobs:
   build:
     name: Build
+    if: github.event.deleted != true
     runs-on: ubuntu-latest
     timeout-minutes: 15
     outputs:
