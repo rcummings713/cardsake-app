@@ -4,7 +4,7 @@
 - `specs/MVP_ACCEPTANCE.md`: release gates and test matrix.
 - `specs/SECURITY_PAYMENT.md`: authentication, external gift handoff and privacy rules.
 - `specs/DATA_MODEL.md`: PostgreSQL tables, relationships, constraints, transactions, retention and separate future purchase/gift ledgers.
-- `adr/`: ADR 0001 leaves runtime open until October 14; ADR 0004 records naming; ADR 0005 selects database design with provider/deployment subject to the spike.
+- `adr/`: ADR 0001 leaves runtime open until October 14; ADR 0004 records TheDigitalCardBox naming; ADR 0005 selects database design with provider/deployment subject to the spike.
 - `../planning/DATABASE_BACKLOG_AUDIT.md`: database coverage, issue mapping and redundancy decisions.
 - `reference/`: the current Word financial, system, timeline, executive, journey and question documents. Keep these files in version control and revise them when the product decisions change.
 
