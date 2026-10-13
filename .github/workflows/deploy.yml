@@ -1,0 +1,96 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [master, develop, 'feature/**', 'release/**']
+  pull_request:
+    branches: [master, develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      environment: ${{ steps.plan.outputs.environment }}
+      command: ${{ steps.plan.outputs.command }}
+      worker: ${{ steps.plan.outputs.worker }}
+      previewName: ${{ steps.plan.outputs.previewName }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --test scripts/deployment-plan.test.mjs
+      - run: npm run check:planning
+      - run: npm run build
+      - id: plan
+        name: Select deployment from branch
+        run: node scripts/deployment-plan.mjs
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: site-${{ github.run_id }}
+          path: dist
+          if-no-files-found: error
+          overwrite: true
+          retention-days: 14
+
+  deploy:
+    name: Deploy ${{ needs.build.outputs.environment }}
+    needs: build
+    if: needs.build.outputs.environment != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: ${{ needs.build.outputs.environment }}
+      url: ${{ steps.cloudflare.outputs.deployment-url }}
+    concurrency:
+      group: deploy-${{ needs.build.outputs.environment }}-${{ needs.build.outputs.previewName || 'live' }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Reject an outdated production approval
+        if: needs.build.outputs.environment == 'PROD'
+        run: |
+          PROD_BRANCH_SHA=$(git ls-remote origin refs/heads/master | cut -f1)
+          if [ "$PROD_BRANCH_SHA" != "$GITHUB_SHA" ]; then
+            echo 'master has moved. Approve the newest workflow run instead.'
+            exit 1
+          fi
+      - name: Check deployment credentials
+        env:
+          CF_DEPLOY_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_DEPLOY_ACCOUNT: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_DEPLOY_TOKEN" ] || [ -z "$CF_DEPLOY_ACCOUNT" ]; then
+            echo 'Configure CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID in this GitHub environment.'
+            exit 1
+          fi
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: site-${{ github.run_id }}
+          path: dist
+      - name: Deploy the checked build
+        id: cloudflare
+        uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4.149.0'
+          command: ${{ needs.build.outputs.command }}
+      - name: Record deployment
+        env:
+          DEPLOY_URL: ${{ steps.cloudflare.outputs.deployment-url }}
+          DEPLOY_ENVIRONMENT: ${{ needs.build.outputs.environment }}
+        run: |
+          printf 'Environment: %s\n\nCommit: `%s`\n\nURL: %s\n' "$DEPLOY_ENVIRONMENT" "$GITHUB_SHA" "$DEPLOY_URL" >> "$GITHUB_STEP_SUMMARY"

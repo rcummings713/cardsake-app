@@ -1,0 +1,37 @@
+# ADR 0006 DEV, TEST and PROD deployment workflow
+
+**Status:** Accepted configuration; Cloudflare CI credentials and legacy-build cutover are prerequisites to automatic deployment.
+**Date:** 13 October 2026. **Owner:** rcummings713, sole repository contributor.
+
+## Decision
+
+Keep one GitHub repository and use GitHub Actions to build and route static UI deployments to separate Cloudflare Workers:
+
+| Source | GitHub environment | Cloudflare target |
+| --- | --- | --- |
+| `feature/` prefix, including nested branch names | DEV | A named preview under `digitalcardbox-app-dev` |
+| `develop` | TEST | The stable `digitalcardbox-app-test` Worker |
+| `release/` prefix, including nested branch names | TEST | A named preview under `digitalcardbox-app-test` |
+| `master` | PROD | Existing `digitalcardbox-app` Worker, after the owner's manual approval |
+
+Other branches, pull request events and tags build without deployment. Hash-qualified preview names prevent similar, long or nested branch names from colliding or entering shell commands. PROD's GitHub environment permits only the `master` branch.
+
+Promote a tested release by merging it into `master`, then approving the PROD deployment. Master holds approved production source; the recorded deployment commit/version identifies what is actually live while a build or approval is pending. An outdated approval must fail when `master` has moved. A checked build artifact is passed to deployment rather than rebuilt after approval.
+
+## Solo contributor controls
+
+Master requires a pull request and the Build check, with **zero required PR reviewers**. The owner can merge their own PR after checks pass. PROD lists only `rcummings713` as its required deployment reviewer with `prevent_self_review: false`; the owner can approve the deployment they initiated. DEV and TEST have no reviewer requirements. No second-person maker/checker control is introduced.
+
+## Isolation and cutover
+
+Preserve the existing customer URL and application source when installing the pipeline. Bootstrap `master` from the current production history, separately from the feature UI work, make it the default branch, and create `develop` from that bootstrap source. Retain the old `main` branch as a frozen legacy reference during the Cloudflare build-integration cutover. Keep future feature UI changes off master until release promotion.
+
+GitHub environments hold the account ID variable and environment secret `CLOUDFLARE_API_TOKEN`. Cloudflare's current local OAuth session is not an appropriate long-lived CI credential. The existing Git-connected Cloudflare automatic builds must be disabled so they cannot bypass the GitHub PROD approval. Do not delete or disable the live Worker.
+
+Workers, preview URLs and deployment targets are separate. This static setup adds no database, authentication, private storage, AI secret or live payment route. Future bindings and PostgreSQL instances must be explicitly scoped to the environment under DATA_MODEL.md and ADR 0005. Cloudflare API tokens are account scoped; distinct GitHub secret slots alone do not imply per-Worker credential isolation. Only trusted branch pushes deploy, and pull requests never receive deployment secrets.
+
+## Consequences
+
+Use disposable HTTPS `workers.dev` URLs now and attach the final domain to PROD later. Features and release candidates have independent preview URLs. Record each deployment's environment, commit SHA and URL; restore a previous approved master commit for application rollback, then approve its new PROD deployment. Database rollback remains a separate future runbook.
+
+This decides the static UI deployment pipeline only. The production server/runtime spike in ADR 0001 remains open, and the private MVP release gates are unchanged. See [the environment runbook](../../planning/ENVIRONMENTS.md).

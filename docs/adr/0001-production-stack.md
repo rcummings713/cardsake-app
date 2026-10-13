@@ -22,3 +22,5 @@ By October 14, implement a short spike: authenticated host request, protected ev
 The local starter is a UI demo and can be refactored into either option. Domain contracts in `docs/specs` are authoritative; route handlers and Functions are transport adapters. Full Next.js APIs do not run in a static export.
 
 The current Cloudflare Worker preview serves built static demo assets only. Its `wrangler.jsonc` enables that sample deployment and branch previews; it provides no host authentication or server validation and does not resolve this production-stack decision.
+
+[ADR 0006](0006-deployment-environments.md) adds DEV, TEST and owner-approved PROD routing for this static UI. Its GitHub Actions workflow and separate Workers do not resolve the server runtime, identity or PostgreSQL provider decisions above.

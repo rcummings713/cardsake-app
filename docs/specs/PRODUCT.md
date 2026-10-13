@@ -19,6 +19,27 @@ The host creates an event or occasion page and shares a single link or QR. Guest
 7. The app labels a handoff as **unconfirmed**. Only the host can mark a gift **host confirmed** after checking their own account. A click, return URL or guest report is not proof of receipt.
 8. Private host dashboard, consented event-book view, moderation and basic export. Guests are never blocked at premium book entry thresholds.
 
+## Host event choices
+
+The host setup demo retains Wedding, Other dated event, and One-off occasion, and also offers:
+
+- Gender reveal parties
+- Sip and sees
+- First Communions / Confirmations
+- Debutante balls / Cotillions
+- Proms (and pre-prom parties)
+- College Decision Day
+- Bridal showers
+- Bachelor and bachelorette parties
+- Rehearsal dinners
+- Housewarming parties
+- Retirement parties
+- Career promotions / Professional graduations
+- Bat Mitzvahs
+- Wakes / Celebrations of Life
+
+These additional choices use the existing dated, non-wedding lifecycle: contributions and gifts close at day 90. Wedding alone qualifies for gifts through month 12; bridal showers, bachelor/bachelorette parties, and rehearsal dinners do not inherit that extension. One-off occasion retains its bounded undated lifecycle. The selected event label appears in the demo setup summary and guest landing; wakes and celebrations of life use remembrance wording.
+
 ## Persistent customer, guest and gift records
 
 Production follows [DATA_MODEL.md](DATA_MODEL.md) and [ADR 0005](../adr/0005-database-design.md), with managed PostgreSQL and private photo/export storage. Registered customers represent hosts; anonymous guests are event-scoped and independent of expiring sessions. Cards, consent, destination versions, external gift intent/activity and host receipt marks persist independently. UI data remains sample-only.
@@ -30,3 +51,7 @@ External gift activity is not proof of a financial transaction. Future premium p
 Supervised live occasions and optional generated backgrounds extend the free pilot. Later candidates include $4.99 premium cards, $15/$30/$79 polished event books priced from 0–99 / 100–299 / 300+ included entries after day 90, hosted product checkout, approved integrated cash processing, licensed art/GIFs and music clips, advanced AI editing, reminders, printed books, video, referrals, pooled gifts, international rails and native mobile apps. The [backlog](../../planning/backlog.md) retains all candidates.
 
 The $500 developer payment is a one-time, indefinitely fixed arrangement for planned code work. It is separate from vendor, hosting, artwork, counsel, licensing and payment-service costs.
+
+## Deployment environments
+
+[ADR 0006](../adr/0006-deployment-environments.md) separates the static UI's DEV feature previews, TEST develop/release deployments and owner-approved PROD deployments from master. The sole contributor can approve their own production deployment; no second-person review is required by this workflow. Environment setup does not implement the production backend or waive the MVP release gates.

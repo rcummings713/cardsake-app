@@ -12,6 +12,14 @@ DigitalCardBox is a digital card, memory and external cash gift experience for e
 
 The starter uses local sample data. It does **not** create real host accounts, save cards, call AI, or send money. Do not expose real wallet destinations in the demo. Follow the October stories before claiming an MVP release.
 
+## UI reference and pages
+
+The sample UI follows the supplied Margot reference: blush colors, white editorial panels, photographic cards, and Forum/Montserrat/Hanken Grotesk typography. The supplied company logo appears in every shared header and compact footer, including the full demo; its envelope-and-box symbol also appears in the browser tab. The commercial Miss Noteworthy font for decorative script accents requires a licensed webfont; La Belle Aurore is the temporary fallback. Add the licensed declaration to `public/brand-font.css` when available. See [the UI specification](docs/specs/UI_DESIGN.md) for the exact palette and asset sources.
+
+Home, Guest, Host, About, and Contact are available at `/`, `/guest`, `/host`, `/about`, and `/contact`. The full styled concept remains at `/prototype/index.html`; `/prototype/index.html#setup` opens host setup. The existing Cloudflare SPA configuration supports direct page entry and refresh.
+
+Contact lists `support@digitalcardbox.com` for support and `info@digitalcardbox.com` for general information. The form routes support and guest-experience drafts to Support; general, hosting, and feedback drafts go to General Info. Visitors can copy the draft or open it in their own email app. No contact backend is included, and preparing a draft does not send it.
+
 ## Choose the production backend early
 
 The React and Vite starter gets development moving in the stack the developer knows. [ADR 0001](docs/adr/0001-production-stack.md) records the still open choice between a Next.js server app and React with Cloudflare Functions. Decide by **October 14**. Both approaches stay in one repository with the same domain contracts. AI keys, host sessions, destination validation, storage and event-window rules must run on the server.
@@ -37,3 +45,7 @@ The production database design is [DATA_MODEL.md](docs/specs/DATA_MODEL.md): one
 Use the separate [GitHub setup guide](planning/GITHUB_SETUP.md). Create one **private** repository, import issues and sub-issues, then create a GitHub Projects Board and import those issues. The importer does not run unless you pass `--apply`.
 
 For a disposable public **sample UI** URL, follow [the static preview guide](planning/DEPLOY_DISPOSABLE_POC.md).
+
+## Deployment environments
+
+See [the environment runbook](planning/ENVIRONMENTS.md) and [ADR 0006](docs/adr/0006-deployment-environments.md) for DEV feature previews, TEST develop/release deployments, and owner-approved PROD deployments from master. Self-review is enabled; no second contributor is required.
