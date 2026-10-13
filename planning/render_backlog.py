@@ -12,7 +12,7 @@ def render(data):
     october = sorted((s for s in stories if s['target_date']),
                      key=lambda s: (s['target_date'], s['id']))
     lines = [
-        '# DigitalCardBox development backlog', '',
+        '# TheDigitalCardBox development backlog', '',
         f"**October private MVP target:** 31 October 2026 · {data['october_target_hours']} focused developer hours across {len(october)} stories.",
         '**Status:** AI-drafted estimates; release depends on acceptance gates and capacity, not date alone.',
         '**Source:** Generated from `backlog.json` by `python3 planning/render_backlog.py`.', '',

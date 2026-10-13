@@ -42,8 +42,8 @@ function PageLink({ page, navigate, children, className, current }: {
 
 function BrandLogo({ compact = false }: { compact?: boolean }) {
   return <span className={`brand-logo${compact ? " brand-logo-compact" : ""}`}>
-    <img src="/images/company-logo.png" alt="DigitalCardBox — Elevating events & memories"
-      width={1179} height={611} decoding="async" />
+    <img src="/images/company-logo.png?brand=thedigitalcardbox" alt="TheDigitalCardBox — Elevating events & memories"
+      width={1742} height={903} decoding="async" />
   </span>;
 }
 
@@ -64,7 +64,7 @@ function ContactPage() {
       setCopyStatus("Please enter your name and a message before preparing a draft.");
       return;
     }
-    setSubject("DigitalCardBox · " + selectedTopic.label);
+    setSubject("TheDigitalCardBox · " + selectedTopic.label);
     setDraft(`${message}\n\nFrom: ${name}\nReply to: ${email}`);
     setCopyStatus("Your draft is ready below. No message has been sent.");
   }
@@ -106,7 +106,7 @@ function ContactPage() {
         </section>}
       </section>
       <aside className="sidebar">
-        <section className="sidebar-card contact-card"><span className="script-accent">hello!</span><h2>A note away</h2><p>For questions about DigitalCardBox and feedback on the experience.</p>
+        <section className="sidebar-card contact-card"><span className="script-accent">hello!</span><h2>A note away</h2><p>For questions about TheDigitalCardBox and feedback on the experience.</p>
           <dl className="contact-addresses">
             <div><dt>Support Email</dt><dd><a href={`mailto:${supportEmail}`}>{supportEmail}</a></dd></div>
             <div><dt>General Info</dt><dd><a href={`mailto:${infoEmail}`}>{infoEmail}</a></dd></div>
@@ -115,7 +115,7 @@ function ContactPage() {
         <section className="sidebar-card faq-card"><p className="eyebrow">A little help</p>
           <details><summary>Do I need to send a gift?</summary><p>No. A kind note is enough. Notes and gifts are independent.</p></details>
           <details><summary>Does this demo save my note?</summary><p>No. Demo notes stay in the open page and disappear when you reload.</p></details>
-          <details><summary>Does DigitalCardBox send money?</summary><p>No. The demo makes no transfers. The planned app offers directions to host-enabled external services.</p></details>
+          <details><summary>Does TheDigitalCardBox send money?</summary><p>No. The demo makes no transfers. The planned app offers directions to host-enabled external services.</p></details>
         </section>
       </aside>
     </div>
@@ -138,7 +138,7 @@ export default function App() {
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
   useEffect(() => {
-    document.title = `${titles[page]} · DigitalCardBox`;
+    document.title = `${titles[page]} · TheDigitalCardBox`;
     if (initialRender.current) initialRender.current = false;
     else { mainRef.current?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: "instant" }); }
   }, [page]);
@@ -159,8 +159,8 @@ export default function App() {
     <div className="demo-banner"><span className="demo-label">A little preview</span>Sample data only. No accounts, saved notes, live AI, or money transfers.</div>
     <main id="main-content" ref={mainRef} tabIndex={-1}>
       {page === "home" && <>
-        <h1 className="visually-hidden">DigitalCardBox — cards, gifts, and memories worth keeping</h1>
-        <section className="featured-grid" aria-label="Explore DigitalCardBox">
+        <h1 className="visually-hidden">TheDigitalCardBox — cards, gifts, and memories worth keeping</h1>
+        <section className="featured-grid" aria-label="Explore TheDigitalCardBox">
           <PageLink {...linkProps} page="guest" className="feature-card"><img src="/images/flowers.jpg" alt="A soft pink and white bouquet for a special occasion" width="1000" height="1250" fetchPriority="high" /><div className="feature-caption"><span className="eyebrow">Cards &amp; kind words</span><h2>A little note.<br />A lasting memory.</h2></div></PageLink>
           <PageLink {...linkProps} page="host" className="feature-card"><img src="/images/celebration.jpg" alt="An intimate celebration table with flowers and candlelight" width="1000" height="1250" /><div className="feature-caption"><span className="eyebrow">For your celebration</span><h2>Bring everyone together<br />with one simple link.</h2></div></PageLink>
           <PageLink {...linkProps} page="about" className="feature-card"><img src="/images/tea.jpg" alt="A quiet cup of tea, a reminder to enjoy the little moments" width="1000" height="1250" /><div className="feature-caption"><span className="eyebrow">Memories worth keeping</span><h2>Make the moment last<br />longer than the day.</h2></div></PageLink>
@@ -170,20 +170,20 @@ export default function App() {
           <article className="story-panel"><img src="/images/celebration.jpg" alt="A celebration ready for friends and family" width="1000" height="1250" loading="lazy" /><div><p className="eyebrow">Less organizing, more celebrating</p><h2>One celebration.<br />So many beautiful memories.</h2><p>The idea is simple: share one link for cards and memories, offer optional external gift choices, and keep the words together in your private CardVault.</p><PageLink {...linkProps} page="host" className="primary">Explore host view <span aria-hidden="true">↗</span></PageLink></div></article>
           <section className="keepsake-panel"><p className="eyebrow">A glimpse of the guest experience</p><h2>Alex &amp; Maya</h2><p className="event-date">The wedding · June 14, 2027 · sample event</p><blockquote>“Here’s to all the small, ordinary moments that become your favorite memories.”</blockquote><PageLink {...linkProps} page="guest" className="secondary">Leave a kind word <span aria-hidden="true">↗</span></PageLink></section>
         </div><aside className="sidebar">
-          <section className="sidebar-card welcome-card"><img className="round-image" src="/images/flowers.jpg" alt="" width="200" height="200" loading="lazy" /><span className="script-accent">hello!</span><p>Welcome to DigitalCardBox. A thoughtful little place for the people, celebrations, and words that mean the most.</p><PageLink {...linkProps} page="about" className="primary">Get to know us</PageLink></section>
+          <section className="sidebar-card welcome-card"><img className="round-image" src="/images/flowers.jpg" alt="" width="200" height="200" loading="lazy" /><span className="script-accent">hello!</span><p>Welcome to TheDigitalCardBox. A thoughtful little place for the people, celebrations, and words that mean the most.</p><PageLink {...linkProps} page="about" className="primary">Get to know us</PageLink></section>
           <section className="sidebar-card quick-links"><h2>Make yourself at home</h2><PageLink {...linkProps} page="guest">Leave a note <span aria-hidden="true">↗</span></PageLink><PageLink {...linkProps} page="host">Host a celebration <span aria-hidden="true">↗</span></PageLink><a href="/prototype/index.html">Full clickable demo <span aria-hidden="true">↗</span></a><PageLink {...linkProps} page="contact">Say hello <span aria-hidden="true">↗</span></PageLink></section>
           <section className="sidebar-card quiet-card"><span aria-hidden="true" className="heart-mark">♡</span><h2>Words are always enough.</h2><p>A gift is optional. A note is personal. Every guest has a place here.</p></section>
         </aside></div>
       </>}
       {page === "about" && <>
-        <div className="page-heading"><p className="eyebrow">A little about DigitalCardBox</p><h1>Celebrate simply.<br />Keep what matters.</h1><p>The heart of a greeting card. The ease of a shared link.</p></div>
+        <div className="page-heading"><p className="eyebrow">A little about TheDigitalCardBox</p><h1>Celebrate simply.<br />Keep what matters.</h1><p>The heart of a greeting card. The ease of a shared link.</p></div>
         <section className="about-story panel">
           <img src="/images/flowers.jpg" alt="A bouquet of pink and white flowers" width="1000" height="1250" />
           <div>
             <span className="script-accent">our purpose</span>
             <h2>Less to carry.<br />More to keep.</h2>
             <p>The best part of a celebration is the connection: a heartfelt note, a generous gesture, a memory you’ll smile at years later.</p>
-            <p>DigitalCardBox is being built to bring that feeling into a simpler, mobile-friendly experience. Our vision connects elegant digital invitations, personal e-cards, and optional cash gifting in one thoughtful place.</p>
+            <p>TheDigitalCardBox is being built to bring that feeling into a simpler, mobile-friendly experience. Our vision connects elegant digital invitations, personal e-cards, and optional cash gifting in one thoughtful place.</p>
             <p>Hosts can look forward to sharing an event link or QR code and gathering kind words in a private CardVault. Guests will be able to write from wherever they are and, if they choose, send a gift through a host-enabled external service.</p>
             <p>From weddings and baby showers to milestone parties and new beginnings: fewer last-minute card runs, ATM stops, and envelopes to look after. Less paper to manage. More time for the people who matter.</p>
             <PageLink {...linkProps} page="host" className="primary">Explore hosting <span aria-hidden="true">↗</span></PageLink>
@@ -208,8 +208,8 @@ export default function App() {
           <p className="small">Your draft stays in this open page. Reloading clears it. No message is saved or submitted in this demo.</p><a className="text-link" href="/prototype/index.html">Try card design in the full demo <span aria-hidden="true">↗</span></a>
         </section><section className="panel"><p className="eyebrow">02 / An optional gesture</p><h2>Choose a gift service.</h2><p className="small">Demo only. No payment app opens and no transfer occurs.</p>
           <div className="service-list" role="group" aria-label="Payment service">{DEMO_DESTINATIONS.map((route) => <button className={service === route.service ? "selected" : ""} key={route.service} onClick={() => changeService(route.service)} aria-pressed={service === route.service}>{route.service}</button>)}</div>
-          <div className="destination"><p className="small">Destination supplied by the event host · sample only</p><strong>{destination.recipient}</strong><dl><dt>Service</dt><dd>{destination.service}</dd><dt>Exact account</dt><dd>{destination.identifier}</dd></dl><p className="small">DigitalCardBox has not independently verified these host-supplied details.</p></div>
-          <p>Before sending, check the recipient inside your payment service. If it differs, stop and contact your host through a known channel. DigitalCardBox cannot confirm an external transfer.</p>
+          <div className="destination"><p className="small">Destination supplied by the event host · sample only</p><strong>{destination.recipient}</strong><dl><dt>Service</dt><dd>{destination.service}</dd><dt>Exact account</dt><dd>{destination.identifier}</dd></dl><p className="small">TheDigitalCardBox has not independently verified these host-supplied details.</p></div>
+          <p>Before sending, check the recipient inside your payment service. If it differs, stop and contact your host through a known channel. TheDigitalCardBox cannot confirm an external transfer.</p>
           <label className="checkbox"><input type="checkbox" checked={acknowledged} onChange={(event) => { setAcknowledged(event.target.checked); setHandoffPreview(false); }} /><span>I will check the recipient inside the payment service.</span></label>
           <button className="primary" disabled={!acknowledged} onClick={() => setHandoffPreview(true)}>Preview handoff <span aria-hidden="true">↗</span></button>
           {handoffPreview && <p className="handoff-status" role="status">Demo preview for {service}. No payment app opened and no money was sent. External gifts remain unconfirmed until the host checks their own account.</p>}
@@ -218,10 +218,10 @@ export default function App() {
       {page === "host" && <>
         <div className="page-heading"><p className="eyebrow">For hosts · sample data</p><h1>Your people.<br />Your celebration.</h1><p>One thoughtful place for everything they want to say.</p></div>
         <section className="host-intro panel"><img src="/images/celebration.jpg" alt="A table set for an intimate celebration" width="1000" height="1250" /><div><p className="eyebrow">A single link, so many memories</p><h2>More time for the moment.</h2><p>In the planned app, sign in, create your occasion, confirm any enabled external gift destinations, and share a single guest link or QR.</p><p>Your guests can leave a note without sending a gift. Their kind words come together in your private CardVault.</p><a className="primary" href="/prototype/index.html#setup">Explore host setup <span aria-hidden="true">↗</span></a><p className="small">This demo does not create accounts, publish events, or store host details.</p></div></section>
-        <section className="host-grid" aria-label="Sample host overview"><div className="panel"><span className="eyebrow">Your guest link</span><h2>Easy to share.</h2><strong>digitalcardbox.example/g/alex-maya</strong><p className="small">Example address only · no event is hosted here</p></div><div className="panel"><span className="eyebrow">Optional gift choices</span><h2>The guest chooses.</h2><strong>Cash App · Venmo · Zelle</strong><p className="small">Host-enabled external services · demo routes only</p></div><div className="panel"><span className="eyebrow">Your CardVault</span><h2>Keep the kind words.</h2><strong>Private notes and consented entries</strong><p className="small">Explore the sample book in the full clickable demo</p></div></section>
+        <section className="host-grid" aria-label="Sample host overview"><div className="panel"><span className="eyebrow">Your guest link</span><h2>Easy to share.</h2><strong>thedigitalcardbox.example/g/alex-maya</strong><p className="small">Example address only · no event is hosted here</p></div><div className="panel"><span className="eyebrow">Optional gift choices</span><h2>The guest chooses.</h2><strong>Cash App · Venmo · Zelle</strong><p className="small">Host-enabled external services · demo routes only</p></div><div className="panel"><span className="eyebrow">Your CardVault</span><h2>Keep the kind words.</h2><strong>Private notes and consented entries</strong><p className="small">Explore the sample book in the full clickable demo</p></div></section>
       </>}
       {page === "not-found" && <section className="page-heading"><p className="eyebrow">A little detour</p><h1>This page isn’t here.</h1><p>Let’s get you back to the celebration.</p><PageLink {...linkProps} page="home" className="primary">Back to home</PageLink></section>}
     </main>
-    <footer className="site-footer"><PageLink {...linkProps} page="home" className="footer-wordmark"><BrandLogo compact /></PageLink><p>Cards, gifts, and the memories worth keeping.</p><nav aria-label="Footer navigation"><PageLink {...linkProps} page="about">About</PageLink><PageLink {...linkProps} page="contact">Contact</PageLink><a href="/prototype/index.html">Full demo</a></nav><p className="small">DigitalCardBox · Sample experience · October 2026</p></footer>
+    <footer className="site-footer"><PageLink {...linkProps} page="home" className="footer-wordmark"><BrandLogo compact /></PageLink><p>Cards, gifts, and the memories worth keeping.</p><nav aria-label="Footer navigation"><PageLink {...linkProps} page="about">About</PageLink><PageLink {...linkProps} page="contact">Contact</PageLink><a href="/prototype/index.html">Full demo</a></nav><p className="small">TheDigitalCardBox · Sample experience · October 2026</p></footer>
   </div>;
 }

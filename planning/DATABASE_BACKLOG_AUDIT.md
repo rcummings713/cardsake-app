@@ -1,7 +1,7 @@
 # Database coverage and redundancy audit
 
 **Reviewed:** 13 October 2026. **Repository:** `rcummings713/digitalcardbox-app`.
-**Project:** [DigitalCardBox Development](https://github.com/users/rcummings713/projects/3).
+**Project:** [TheDigitalCardBox Development](https://github.com/users/rcummings713/projects/3).
 
 Reviewed all six Word references, canonical specs, ADRs, repository instructions, the complete local 17-epic/101-story backlog, and all 60 existing GitHub issues (9 epics/51 stories, including comments, parent/sub-issue and blocking relationships). The project had exactly those 60 issues and no draft items. No pre-existing database foundation story or linked blocker was found. Existing issue #14's event-selection update and #5's presentation history are preserved.
 

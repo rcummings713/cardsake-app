@@ -1,6 +1,6 @@
-# DigitalCardBox development starter
+# TheDigitalCardBox development starter
 
-DigitalCardBox is a digital card, memory and external cash gift experience for events and everyday occasions. The **private MVP target is October 31, 2026**. This repository includes a running React UI starter, the clickable HTML concept, the current Word reference documents, the October backlog and implementation guardrails.
+TheDigitalCardBox is a digital card, memory and external cash gift experience for events and everyday occasions. The **private MVP target is October 31, 2026**. This repository includes a running React UI starter, the clickable HTML concept, the current Word reference documents, the October backlog and implementation guardrails.
 
 ## Start locally
 

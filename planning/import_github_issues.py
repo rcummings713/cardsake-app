@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preview or import DigitalCardBox epics and sub-issues into an existing GitHub repo.
+"""Preview or import TheDigitalCardBox epics and sub-issues into an existing GitHub repo.
 
 Requires GitHub CLI, authentication, and an existing repository. Dry run is
 the default. Stable HTML markers make repeated --apply runs idempotent.
@@ -108,7 +108,7 @@ def main():
              any(s["target_date"] for s in e["stories"])]
     count = sum(len([s for s in e["stories"] if not args.only_october or s["target_date"]])
                 for e in epics)
-    print(f'DigitalCardBox: {len(epics)} epics, {count} stories for {args.repo}')
+    print(f'TheDigitalCardBox: {len(epics)} epics, {count} stories for {args.repo}')
     if not args.apply:
         print("Dry run only. Create and authenticate the private repo, then add --apply.")
         for e in epics:

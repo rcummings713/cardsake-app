@@ -1,4 +1,4 @@
-# DigitalCardBox UI presentation
+# TheDigitalCardBox UI presentation
 
 **Updated:** 13 October 2026. **Scope:** current-branch sample UI, not a production backend decision.
 
@@ -14,11 +14,11 @@ The requested reference is [Margot by 17th Avenue](https://demo.17thavenuedesign
 | Dark pink | `#CAA79E` |
 | Text | `#222222` |
 
-Use white editorial panels, the supplied company logo centered in the header, three photographic feature cards, rectangular buttons, and a main column with an introductory sidebar. The photographs are independently sourced; the layout carries DigitalCardBox content and actions. Use `#6E5F5C` for accessible muted text instead of the pale decorative colors.
+Use white editorial panels, the supplied company logo centered in the header, three photographic feature cards, rectangular buttons, and a main column with an introductory sidebar. The photographs are independently sourced; the layout carries TheDigitalCardBox content and actions. Use `#6E5F5C` for accessible muted text instead of the pale decorative colors.
 
 ## Company logo
 
-The founder-supplied `IMG_8033.heic` is hosted as `public/images/company-logo.png`, converted without changing its artwork. Show the full logo and embedded “Elevating events & memories” tagline once in the shared header, and a smaller version once in the footer, on all React pages and the full clickable demo. Both link home and have meaningful alternative text. Use a CSS viewport to exclude the charcoal screenshot frame and excess padding, preserving the bitmap's proportions and lettering. A simplified envelope-and-box SVG serves as the favicon.
+The founder-supplied `IMG_8033.heic` remains the original logo source. The current `public/images/company-logo.png` is an AI-edited derivative with the main lettering changed to **TheDigitalCardBox**, retaining the envelope-and-box design, palette and embedded tagline. Show the full logo and embedded “Elevating events & memories” tagline once in the shared header, and a smaller version once in the footer, on all React pages and the full clickable demo. Both link home and have meaningful alternative text. Use a CSS viewport to exclude the charcoal screenshot frame and excess padding, preserving the bitmap's proportions and complete current lettering. A simplified envelope-and-box SVG serves as the favicon.
 
 Keep page bodies, customer cards, messages, forms, and book entries free of additional company logo placements. The supplied logo supersedes the prior script text wordmark; the Margot-inspired colors and fonts remain in the page content.
 

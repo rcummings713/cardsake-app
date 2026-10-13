@@ -1,8 +1,8 @@
 # UI images
 
-`company-logo.png` is a lossless PNG conversion of the founder-supplied `IMG_8033.heic`. The shared header and compact footer show the original artwork in a CSS viewport that excludes the outer screenshot frame. The browser-tab icon is a simplified SVG rendition of its envelope-and-box symbol. Logo artwork, lettering, and embedded tagline are preserved in the displayed bitmap.
+`company-logo.png` is an AI-edited derivative of the founder-supplied `IMG_8033.heic`, with the main lettering updated to **TheDigitalCardBox**. The original HEIC source is preserved. See [the edit prompt and provenance](../../docs/reference/branding/logo-edit.md). The shared header and compact footer show the updated artwork in a CSS viewport that excludes the outer screenshot frame. The browser-tab icon is a simplified SVG rendition of its envelope-and-box symbol. The updated wordmark, envelope-and-box motif, and embedded tagline appear in the displayed bitmap.
 
-Locally hosted photos sourced from Unsplash for the DigitalCardBox presentation. These are not copied from the Margot theme's licensed stock photographs.
+Locally hosted photos sourced from Unsplash for TheDigitalCardBox presentation. These are not copied from the Margot theme's licensed stock photographs.
 
 | File | Original image |
 | --- | --- |
