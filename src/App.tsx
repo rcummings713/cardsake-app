@@ -26,7 +26,7 @@ export default function App() {
   return (
     <div className="shell">
       <header className="site-header">
-        <button className="wordmark" onClick={() => setView("welcome")}>Cardsake<span>.</span></button>
+        <button className="wordmark" onClick={() => setView("welcome")}>DigitalCardBox<span>.</span></button>
         <nav aria-label="Demo views">
           <button className={view === "guest" ? "active" : ""} onClick={() => setView("guest")}>Guest</button>
           <button className={view === "host" ? "active" : ""} onClick={() => setView("host")}>Host</button>
@@ -94,7 +94,7 @@ export default function App() {
                   <dt>Exact account</dt><dd>{destination.identifier}</dd>
                 </dl>
               </div>
-              <p>Before sending, check the recipient shown inside your payment service. Stop if it differs. Cardsake cannot confirm a transfer made outside this site.</p>
+              <p>Before sending, check the recipient shown inside your payment service. Stop if it differs. DigitalCardBox cannot confirm a transfer made outside this site.</p>
               <label className="checkbox">
                 <input type="checkbox" checked={acknowledged} onChange={(e) => setAcknowledged(e.target.checked)} />
                 I will check the recipient inside the payment service.
@@ -112,7 +112,7 @@ export default function App() {
             <h1>One link for your celebration</h1>
             <p>In the real MVP, hosts sign in, create an occasion, confirm each enabled gift destination, and share a live URL or QR. This starter does not store host details.</p>
             <div className="host-grid">
-              <div><span>Guest link</span><strong>cardsake.example/g/alex-maya</strong></div>
+              <div><span>Guest link</span><strong>digitalcardbox.example/g/alex-maya</strong></div>
               <div><span>Gift services</span><strong>Cash App · Venmo · Zelle</strong></div>
               <div><span>CardVault</span><strong>Private notes and consented entries</strong></div>
             </div>
@@ -120,7 +120,7 @@ export default function App() {
           </section>
         )}
       </main>
-      <footer>Cardsake development starter · October 2026 private MVP target</footer>
+      <footer>DigitalCardBox development starter · October 2026 private MVP target</footer>
     </div>
   );
 }

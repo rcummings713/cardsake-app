@@ -1,11 +1,11 @@
-# Cardsake development starter
+# DigitalCardBox development starter
 
-Cardsake is a digital card, memory and external cash gift experience for events and everyday occasions. The **private MVP target is October 31, 2026**. This repository includes a running React UI starter, the clickable HTML concept, the current Word reference documents, the October backlog and implementation guardrails.
+DigitalCardBox is a digital card, memory and external cash gift experience for events and everyday occasions. The **private MVP target is October 31, 2026**. This repository includes a running React UI starter, the clickable HTML concept, the current Word reference documents, the October backlog and implementation guardrails.
 
 ## Start locally
 
 1. Install [Node.js](https://nodejs.org/en/download) 22 or newer, [Git](https://git-scm.com/downloads) and [Visual Studio Code](https://code.visualstudio.com/Download) or use Visual Studio with its integrated terminal.
-2. Unzip the starter and open the **cardsake-app** folder: `code cardsake-app` or **File → Open Folder**.
+2. Unzip the starter and open the **digitalcardbox-app** folder: `code digitalcardbox-app` or **File → Open Folder**.
 3. In that folder's terminal run `npm install`, then `npm run dev`.
 4. Open the local URL Vite prints, normally `http://127.0.0.1:5173/`. The longer clickable concept is at `http://127.0.0.1:5173/prototype/index.html`.
 5. Run `npm run build` to typecheck and build, and `npm run check:planning` to check the backlog.

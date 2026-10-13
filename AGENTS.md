@@ -1,4 +1,4 @@
-# Cardsake agent instructions
+# DigitalCardBox agent instructions
 
 ## Start with the requirements
 
