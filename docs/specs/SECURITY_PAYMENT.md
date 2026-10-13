@@ -21,6 +21,10 @@ The October MVP handles **gift directions**, not gift money. Cash App, Venmo or 
 
 ## Data and operations
 
+[DATA_MODEL.md](DATA_MODEL.md) defines storage/access/deletion. Keep one provider-linked customer identity and event-scoped guests; no guest email or financial credentials required to identify a contribution. Expiring token hashes are separate from accepted content. Server scope and composite FKs prevent cross-event guest/media/route references.
+
+Application-encrypt destinations and recoverable share secrets with external keys. Separate migration/runtime roles and test policies with actual runtime credentials and transaction-scoped actor context. Atomically revalidate event, guest/link revocation, route/version, acknowledgment and switches at handoff; cached reads are insufficient. Handoff issuance is unconfirmed activity, never a settled transaction. Audit/outbox/idempotency contain minimal IDs/revisions, no raw secrets or private text. Retention, object deletion and restoration of deletion tombstones are MVP recovery requirements.
+
 Keep AI keys and any vendor secret on the server, never in `VITE_*` or client bundles. Do not collect card numbers, bank details, wallet credentials, payment passwords or screenshots as proof. Encrypt stored destination identifiers, restrict reads, redact logs, use least privilege, rate limits, media caps, malware scanning or safe media handling, backups and a restore drill. Record minimal audit events for destination edits and exports. Test cross-event reads, expired sessions, deadline boundaries, stale route versions, service switching and failure states before live users.
 
 An integrated checkout is a separate phase requiring written provider approval of custody, underwriting, payout, fees, disputes and liability. Only then use provider-hosted data collection, signed webhooks, idempotent ledger transitions and reconciliation. A browser return still does not verify payment.

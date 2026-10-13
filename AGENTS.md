@@ -4,6 +4,8 @@
 
 Before changing production behavior, read `docs/specs/PRODUCT.md`, `SECURITY_PAYMENT.md`, and `MVP_ACCEPTANCE.md`.
 
+Before designing or changing persistence, also read `docs/specs/DATA_MODEL.md`, ADR 0005 and `planning/DATABASE_BACKLOG_AUDIT.md`. DCB-E18 owns database foundations; existing domain stories own behavior and table use. External gift activity is not a verified financial transaction.
+
 For work tied to a GitHub story, read the full story, its acceptance criteria, parent epic, relevant comments, and linked blockers before editing. Start with the issue number or URL provided in the task. If none is provided, search existing issues for a match and flag any ambiguity. Read related stories when planning a feature, but do not load the entire board for a single implementation task. If GitHub access is unavailable, say which issue details could not be checked.
 
 Read ADR 0001 before choosing a production server runtime. The React starter and `public/prototype/index.html` contain **sample-only** data; their mock logic is not server validation.

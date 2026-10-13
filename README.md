@@ -25,12 +25,14 @@ The React and Vite starter gets development moving in the stack the developer kn
 | `docs/reference/` | Six maintained Word planning documents |
 | `docs/specs/` | Canonical October scope, release gates and money rules |
 | `docs/adr/` | Architecture decisions and an open stack decision |
-| `planning/` | Dated 17 epic / 101 story backlog and GitHub importer |
+| `planning/` | Dated 18 epic / 104 story backlog, database audit and GitHub importer |
 | `.github/` and `AGENTS.md` | Copilot instructions and review prompts |
 
 The specifications describe the October release. Reference Word files also discuss later business scenarios and integrations; their prices are assumptions pending quotes. If they diverge, update both after a decision.
 
 ## GitHub
+
+The production database design is [DATA_MODEL.md](docs/specs/DATA_MODEL.md): one managed PostgreSQL database per environment, event-scoped guest records and separate external gift activity, with private photo/export storage. [ADR 0005](docs/adr/0005-database-design.md) records the decision and [the backlog audit](planning/DATABASE_BACKLOG_AUDIT.md) maps its implementation. Provider/runtime installation remains pending; the demo has no database. The October estimate is now 180 hours across 54 stories, including 24 explicit foundation hours; October 31 requires capacity review.
 
 Use the separate [GitHub setup guide](planning/GITHUB_SETUP.md). Create one **private** repository, import issues and sub-issues, then create a GitHub Projects Board and import those issues. The importer does not run unless you pass `--apply`.
 

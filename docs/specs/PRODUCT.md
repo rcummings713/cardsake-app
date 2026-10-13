@@ -19,6 +19,12 @@ The host creates an event or occasion page and shares a single link or QR. Guest
 7. The app labels a handoff as **unconfirmed**. Only the host can mark a gift **host confirmed** after checking their own account. A click, return URL or guest report is not proof of receipt.
 8. Private host dashboard, consented event-book view, moderation and basic export. Guests are never blocked at premium book entry thresholds.
 
+## Persistent customer, guest and gift records
+
+Production follows [DATA_MODEL.md](DATA_MODEL.md) and [ADR 0005](../adr/0005-database-design.md), with managed PostgreSQL and private photo/export storage. Registered customers represent hosts; anonymous guests are event-scoped and independent of expiring sessions. Cards, consent, destination versions, external gift intent/activity and host receipt marks persist independently. UI data remains sample-only.
+
+External gift activity is not proof of a financial transaction. Future premium purchase transactions and approved integrated gift ledgers are separate Post-MVP contracts. Guest intake closure does not delete CardVault records; ongoing private access follows a published retention/deletion policy.
+
 ## Beyond October
 
 Supervised live occasions and optional generated backgrounds extend the free pilot. Later candidates include $4.99 premium cards, $15/$30/$79 polished event books priced from 0–99 / 100–299 / 300+ included entries after day 90, hosted product checkout, approved integrated cash processing, licensed art/GIFs and music clips, advanced AI editing, reminders, printed books, video, referrals, pooled gifts, international rails and native mobile apps. The [backlog](../../planning/backlog.md) retains all candidates.

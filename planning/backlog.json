@@ -1,8 +1,8 @@
 {
   "project": "DigitalCardBox",
-  "version": "2026-10-11",
-  "source": "Current executive summary, financial summary, MVP timeline, user journey and system design",
-  "note": "AI-drafted planning backlog. October private MVP is an aggressive 150-hour working target; verify all acceptance criteria before allowing live gift handoffs. Post-MVP stories are candidates, not release commitments.",
+  "version": "2026-10-13",
+  "source": "Canonical product/security/database specs, ADRs, Word references and live GitHub backlog review",
+  "note": "AI-drafted planning backlog. October working estimate is 180 hours after adding 24 explicit database-foundation hours. Replan capacity before committing to October 31; acceptance gates remain mandatory. Post-MVP candidates are not release commitments.",
   "epics": [
     {
       "id": "DCB-E01",
@@ -90,12 +90,16 @@
           "story": "As a host, I want to sign in securely so that I can manage my event.",
           "acceptance": [
             "Use a managed identity provider and verified email.",
-            "Server stores provider subject and role, not a custom password database."
+            "Server stores provider subject and role, not a custom password database.",
+            "Persist one identity.customers record per (auth_issuer, auth_subject); synchronize verified email without using email as ownership identity or storing passwords."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-16",
-          "estimate_hours": 7
+          "estimate_hours": 7,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E02-S02",
@@ -103,12 +107,16 @@
           "story": "As a host, I want only authorized hosts to see my private event data so that gifts and notes remain private.",
           "acceptance": [
             "Every host read and write checks ownership or explicit membership on the server.",
-            "Cross-event access tests are denied."
+            "Cross-event access tests are denied.",
+            "Resolve ownership from events.events.owner_customer_id and verified customer identity; scoped database interfaces/policies deny cross-event data using actual runtime credentials."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-17",
-          "estimate_hours": 4
+          "estimate_hours": 4,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E02-S03",
@@ -116,7 +124,8 @@
           "story": "As a host, I want a fresh sign-in for payment destination edits and exports so that stolen sessions have less power.",
           "acceptance": [
             "Require step-up authentication on sensitive actions.",
-            "Log actor, event, action and time."
+            "Log actor, event, action and time.",
+            "Append minimal platform.audit_events for sensitive actions; no token, destination identifier or private text in audit payloads."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
@@ -129,12 +138,16 @@
           "story": "As a guest, I want to leave a note without an account so that contributing is easy.",
           "acceptance": [
             "Issue a short-lived event-scoped session and store only its token hash.",
-            "A guest cannot read or edit another guest’s private draft."
+            "A guest cannot read or edit another guest’s private draft.",
+            "Persist identity.event_guests independently of identity.guest_sessions, with same-event guest/link FKs; session expiry/revocation cannot delete accepted cards or gift records."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-18",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E02-S05",
@@ -142,12 +155,16 @@
           "story": "As a host, I want notice when a payment account changes so that I can catch unauthorized edits.",
           "acceptance": [
             "Send a change alert containing service and change time without sensitive secrets.",
-            "Keep old and new route versions in an audit trail."
+            "Keep old and new route versions in an audit trail.",
+            "Queue alerts through platform.outbox_messages in the route-change transaction; audit references immutable destination versions without copying identifiers."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-29",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E02-S06",
@@ -177,12 +194,16 @@
           "story": "As a host, I want to enter an event date, time zone and page type so that the opening and closing dates are accurate.",
           "acceptance": [
             "Server derives allowed windows in the event time zone.",
-            "An undated one-off page must choose a close date within 90 days."
+            "An undated one-off page must choose a close date within 90 days.",
+            "Persist events.events with owner, occasion label, lifecycle kind, IANA timezone, derived UTC deadlines and policy version; only wedding kind grants the month-12 extension."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-16",
-          "estimate_hours": 6
+          "estimate_hours": 6,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E03-S02",
@@ -190,12 +211,16 @@
           "story": "As a host, I want one link that I can text or email so that remote guests reach the event.",
           "acceptance": [
             "Generate an opaque, unguessable slug.",
-            "Public page exposes only approved event fields."
+            "Public page exposes only approved event fields.",
+            "Persist events.share_links with unique token hash, encrypted recoverable secret and generation; enforce one unrevoked link per event."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-17",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E03-S03",
@@ -268,12 +293,16 @@
           "story": "As a host, I want to close or rotate a compromised link so that I can protect the event.",
           "acceptance": [
             "Date and closing window cannot move after first contribution or gift attempt.",
-            "Revocation can close earlier and invalidates the old slug."
+            "Revocation can close earlier and invalidates the old slug.",
+            "Lock the event row for date edits and first accepted submission/created gift intent; set window_locked_at atomically and test concurrent attempts to reset deadlines."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-24",
-          "estimate_hours": 4
+          "estimate_hours": 4,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         }
       ],
       "release": "October 2026 private MVP and follow-on"
@@ -290,12 +319,16 @@
           "story": "As a guest, I want to write my own message so that I can contribute without AI.",
           "acceptance": [
             "Text remains editable until submission.",
-            "Server validates length, consent and active contribution window."
+            "Server validates length, consent and active contribution window.",
+            "Persist final text in cards.submissions using same-event guest references and idempotent submission; explicit consent and outbox delivery commit with accepted content."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-20",
-          "estimate_hours": 4
+          "estimate_hours": 4,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E04-S02",
@@ -303,12 +336,16 @@
           "story": "As a guest, I want to choose a layout, palette and motif so that my card feels personal.",
           "acceptance": [
             "A static template is immediately available.",
-            "Final text is rendered separately from background art for readability."
+            "Final text is rendered separately from background art for readability.",
+            "Use the same cards.submissions record for note/card kinds; retain template key/version and bounded style JSON instead of duplicating card text or adding an October template catalog."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-21",
-          "estimate_hours": 5
+          "estimate_hours": 5,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E04-S03",
@@ -329,12 +366,16 @@
           "story": "As a guest, I want to attach a photo so that the host can remember the occasion.",
           "acceptance": [
             "Enforce type, size and dimension limits and scan uploads.",
-            "Private storage and short-lived access URLs are used."
+            "Private storage and short-lived access URLs are used.",
+            "Persist cards.media_assets metadata and private object key; scoped FKs, clean scan state and a partial unique constraint enforce one guest-owned photo per submission."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-23",
-          "estimate_hours": 5
+          "estimate_hours": 5,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E04-S05",
@@ -342,12 +383,17 @@
           "story": "As a guest, I want to control whether my message appears in the shared book so that my preferences are respected.",
           "acceptance": [
             "Consent is explicit and saved with the submission.",
-            "Private submissions are excluded from the consented book view."
+            "Private submissions are excluded from the consented book view.",
+            "Persist ordered cards.consent_events with explicit choice and wording version; missing/withdrawn consent denies book inclusion even when the projection is stale.",
+            "Increment the submission public source revision and publish a minimal outbox event for later consent changes so stale book projections cannot authorize an export."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-24",
-          "estimate_hours": 2
+          "estimate_hours": 2,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E04-S06",
@@ -355,12 +401,16 @@
           "story": "As a host, I want to moderate guest content so that the book is safe to share.",
           "acceptance": [
             "Host can hide or remove an entry with an audit record.",
-            "Removal is reflected in later exports."
+            "Removal is reflected in later exports.",
+            "Append cards.moderation_actions, update content state and publish removal atomically; invalidate existing export artifacts and prevent replay from resurrecting erased data."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-25",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         }
       ],
       "release": "October 2026 private MVP and follow-on"
@@ -403,12 +453,16 @@
           "story": "As an operator, I want AI requests bounded so that abuse and cost stay manageable.",
           "acceptance": [
             "Validate sessions and event window before provider calls.",
-            "Apply input caps, quotas, output validation and refusal fallback."
+            "Apply input caps, quotas, output validation and refusal fallback.",
+            "Persist minimal ai.requests and atomically reserve ai.usage_buckets for guest/event/application caps; concurrent requests cannot exceed limits and failed reservations recover safely."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-24",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E05-S04",
@@ -455,7 +509,8 @@
           "story": "As a founder, I want request usage measured so that a free pilot does not create runaway costs.",
           "acceptance": [
             "Record token/image usage without private memories in logs.",
-            "Budget switch disables AI while templates and manual notes continue."
+            "Budget switch disables AI while templates and manual notes continue.",
+            "Keep token/image counts, prompt/model versions and outcomes without durable private prompt/suggestion copies; quota counters are not financial transactions."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
@@ -477,12 +532,16 @@
           "story": "As a host, I want to enable Cash App, Venmo and Zelle together so that guests can choose the service they use.",
           "acceptance": [
             "Allow any nonempty subset with one active destination per service.",
-            "Only confirmed enabled routes appear to guests."
+            "Only confirmed enabled routes appear to guests.",
+            "Persist gifts.routes with UQ (event_id, service) and a scoped current-version reference; enabled plus current host-confirmed version determines guest availability."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-26",
-          "estimate_hours": 5
+          "estimate_hours": 5,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E06-S02",
@@ -490,7 +549,8 @@
           "story": "As a host, I want to enter each account twice so that I can catch typing errors.",
           "acceptance": [
             "Require exact match, format validation, host ownership acknowledgment and review in that service.",
-            "Do not accept arbitrary redirect URLs or account credentials."
+            "Do not accept arbitrary redirect URLs or account credentials.",
+            "Persist immutable encrypted gifts.destination_versions; record host confirmation actor/time/wording version once and never store the repeated identifier entry."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
@@ -503,12 +563,16 @@
           "story": "As a host, I want to edit or disable one destination so that other services remain available.",
           "acceptance": [
             "Fresh authentication, audit and alert are required.",
-            "Edited route disappears until reconfirmed; other confirmed routes continue."
+            "Edited route disappears until reconfirmed; other confirmed routes continue.",
+            "Route edits and handoffs lock the same route row; create a new unconfirmed current version, audit and queue the alert atomically. Prior versions remain historical only."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-27",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E06-S04",
@@ -529,12 +593,17 @@
           "story": "As a guest, I want a fresh recipient check after switching services so that I do not approve the wrong destination.",
           "acceptance": [
             "Changing service or route version clears acknowledgment.",
-            "Handoff stays disabled until the selected route is reviewed again."
+            "Handoff stays disabled until the selected route is reviewed again.",
+            "Increment gifts.gift_intents.review_revision on service/version switches and clear acknowledgment atomically; a stale revision cannot authorize a later handoff.",
+            "Keep a handed-off intent’s selected tuple immutable; a later service choice creates a new intent rather than relabeling a prior gift or receipt."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-28",
-          "estimate_hours": 2
+          "estimate_hours": 2,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E06-S06",
@@ -555,12 +624,17 @@
           "story": "As an operator, I want stale or cross-event gift intents rejected so that a switched or disabled account is not used.",
           "acceptance": [
             "Store selected_service, destination_id and version with the intent.",
-            "Server rejects stale, disabled, unconfirmed or wrong-event route at handoff."
+            "Server rejects stale, disabled, unconfirmed or wrong-event route at handoff.",
+            "Use a short PostgreSQL unit of work through public module repositories to lock event/link/session/route/intent and recheck current deadlines, revocation, switches and exact reviewed tuple before recording handoff_issued.",
+            "Composite FKs bind event/guest/service/route/version; repeated requests deduplicate durable effects but recheck current authorization and route validity before returning a handoff."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-29",
-          "estimate_hours": 4
+          "estimate_hours": 4,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E06-S08",
@@ -568,7 +642,8 @@
           "story": "As a guest, I want the app to state what it knows so that a click is not mistaken for a successful payment.",
           "acceptance": [
             "Link opened and guest reported remain unverified.",
-            "No external handoff is labeled provider verified."
+            "No external handoff is labeled provider verified.",
+            "Persist external activity in gifts.gift_events; handoff_issued/guest_reported stay unconfirmed, with no provider settlement, verified transaction or payout ledger in October."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
@@ -581,12 +656,16 @@
           "story": "As a host, I want to mark a gift received after checking that provider account so that my private list is useful.",
           "acceptance": [
             "UI labels it host marked received.",
-            "Host review records actor and time without claiming provider confirmation."
+            "Host review records actor and time without claiming provider confirmation.",
+            "Append gifts.gift_events host confirmation with actor/time and reviewed version; permit an audited corrective revocation and keep host confirmation distinct from provider verification."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-30",
-          "estimate_hours": 2
+          "estimate_hours": 2,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E06-S10",
@@ -594,7 +673,8 @@
           "story": "As a host, I want gift initiation blocked after close so that old links cannot be used indefinitely.",
           "acceptance": [
             "Active and wedding gift-only states allow new intents.",
-            "Final closure rejects new intents while permitting prior reconciliation."
+            "Final closure rejects new intents while permitting prior reconciliation.",
+            "Check the fresh event clock inside the transaction after locking; final closure blocks new handoffs without deleting prior intents or blocking host reconciliation."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
@@ -616,12 +696,16 @@
           "story": "As a host, I want to view entries and gift intent states so that I can manage my event.",
           "acceptance": [
             "Host-only view displays approved cards and unverified/host marked gift states separately.",
-            "Guest link never grants dashboard access."
+            "Guest link never grants dashboard access.",
+            "Read customer-owned data through public module queries; CardVault is a view of Cards/Gifts data, not a duplicate content table."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-24",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E07-S02",
@@ -629,12 +713,16 @@
           "story": "As a host, I want a book of allowed notes and photos so that I can revisit them.",
           "acceptance": [
             "Book includes only consented and unhidden entries.",
-            "A card with an attached photo counts as one entry."
+            "A card with an attached photo counts as one entry.",
+            "Use book.entry_projection as rebuildable revisioned metadata; obtain content through Cards public contracts and recheck current consent/moderation before disclosure."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-30",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E07-S03",
@@ -642,12 +730,16 @@
           "story": "As a host, I want a basic export even if I never buy an upgrade so that my memories remain accessible.",
           "acceptance": [
             "Host can request export after closure.",
-            "Signed download is short-lived and audited."
+            "Signed download is short-lived and audited.",
+            "Persist book.exports with requester, same-event snapshot, status, private object key, expiry and invalidation; never store signed URLs or serve artifacts after removal/withdrawal."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-30",
-          "estimate_hours": 3
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E07-S04",
@@ -655,12 +747,16 @@
           "story": "As a host, I want a stable snapshot after new entries close so that book pricing and layout can be final.",
           "acceptance": [
             "No late wedding gift adds a new book entry.",
-            "Snapshot records included count and timestamp."
+            "Snapshot records included count and timestamp.",
+            "Persist book.snapshots and book.snapshot_entries after consuming source changes through cutoff; unique membership/position, atomic included count and correction revisions never admit late gifts."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-25",
-          "estimate_hours": 2
+          "estimate_hours": 2,
+          "depends_on": [
+            "DCB-E18-S03"
+          ]
         },
         {
           "id": "DCB-E07-S05",
@@ -729,12 +825,16 @@
           "story": "As a host, I want account identifiers and API keys handled carefully so that exposure is limited.",
           "acceptance": [
             "Keep provider secrets server-side; encrypt sensitive destinations at rest.",
-            "No bank credentials, passwords or payment details in analytics/logs."
+            "No bank credentials, passwords or payment details in analytics/logs.",
+            "Application-encrypt gifts.destination_versions identifiers and recoverable share secrets with external versioned keys; separate migration/runtime roles and redact database errors/audit/outbox."
           ],
           "priority": "P0",
           "release": "October 2026 private MVP",
-          "target_date": "2026-10-13",
-          "estimate_hours": 3
+          "target_date": "2026-10-16",
+          "estimate_hours": 3,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E08-S04",
@@ -755,12 +855,17 @@
           "story": "As a host, I want my accepted cards recoverable so that an outage does not erase the event.",
           "acceptance": [
             "Run tested database backup and restore.",
-            "Private media retention and deletion rules are documented."
+            "Private media retention and deletion rules are documented.",
+            "Document provider/version/backup method and recovery objectives; restore migrated database, private object references and external encryption-key access, then reapply deletion tombstones before serving data.",
+            "Publish retention periods/TTLs and a tested manual deletion runbook for sessions, orphan media, exports, customer/guest/content/gift history and replay evidence; event closure alone does not purge CardVault."
           ],
           "priority": "P1",
           "release": "October 2026 private MVP",
           "target_date": "2026-10-30",
-          "estimate_hours": 2
+          "estimate_hours": 2,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
         },
         {
           "id": "DCB-E08-S06",
@@ -768,7 +873,8 @@
           "story": "As an operator, I want jobs and callbacks to tolerate retries so that duplicate events do not create inconsistent state.",
           "acceptance": [
             "Use idempotency keys or unique event IDs.",
-            "Replay tests cover duplicate and out-of-order events."
+            "Replay tests cover duplicate and out-of-order events.",
+            "Scope this Post-MVP story to provider callbacks and expanded asynchronous workflows; October SQL idempotency/outbox/consumer foundations belong to DCB-E18-S03 and feature-specific retries stay with their domain stories."
           ],
           "priority": "P1",
           "release": "Post-MVP",
@@ -903,7 +1009,8 @@
           "story": "As a host, I want a final server quote so that I pay for the correct $15/$30/$79 tier.",
           "acceptance": [
             "Tier uses 0–99, 100–299 or 300+ consented entries after day 90.",
-            "Price cannot be altered by the browser."
+            "Price cannot be altered by the browser.",
+            "Quote from a frozen book.snapshots revision and included membership; billing.order_items preserve count/tier/price/currency without another book_orders table."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -916,7 +1023,8 @@
           "story": "As a buyer, I want to pay for a card or book through a hosted payment page so that the app does not collect my card details.",
           "acceptance": [
             "Create server-side order and provider session.",
-            "Do not store PAN/CVV or treat return URL as payment proof."
+            "Do not store PAN/CVV or treat return URL as payment proof.",
+            "Persist billing.orders/order_items/payment_attempts; customer or same-event guest buyer, unique provider/request references and server prices remain separate from gift funds."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -929,7 +1037,8 @@
           "story": "As a buyer, I want access to the upgrade after payment so that I receive what I bought.",
           "acceptance": [
             "Verified provider event is replay-safe.",
-            "Entitlement applies once to the correct card or event."
+            "Entitlement applies once to the correct card or event.",
+            "Durably deduplicate verified billing.provider_events by provider/event ID and grant billing.entitlements once per paid target; no browser-controlled paid state."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -942,7 +1051,8 @@
           "story": "As a buyer, I want an honest order status so that I know whether I was charged.",
           "acceptance": [
             "Pending and failed payments do not unlock.",
-            "Refund updates entitlement and purchase history."
+            "Refund updates entitlement and purchase history.",
+            "Persist billing.refunds against the payment attempt with unique provider refund ID; partial/full refunds preserve purchase history and apply the approved entitlement policy."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -990,7 +1100,8 @@
           "story": "As a host, I want hosted identity and payout onboarding so that bank details never enter this app.",
           "acceptance": [
             "Provider collects documents and bank numbers.",
-            "App stores provider account ID and readiness state only."
+            "App stores provider account ID and readiness state only.",
+            "Persist gifts.recipient_accounts with provider account ID/readiness only, scoped to the customer; no identity documents or bank numbers."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1016,7 +1127,8 @@
           "story": "As an operator, I want signed webhooks to update payment state so that browser redirects cannot claim a gift was paid.",
           "acceptance": [
             "Verify raw payload signature and unique provider event ID.",
-            "Duplicate and out-of-order delivery tests pass."
+            "Duplicate and out-of-order delivery tests pass.",
+            "Persist separate gifts.integrated_payments/payment_attempts/provider_events; verified provider-event uniqueness and allowed transitions never promote an external intent to verified payment."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1029,7 +1141,8 @@
           "story": "As a host, I want available and paid-out totals separated so that I understand where money stands.",
           "acceptance": [
             "Settled, payout pending and paid out have distinct states.",
-            "Unsettled funds are never shown as available."
+            "Unsettled funds are never shown as available.",
+            "Finalize provider-approved gifts.ledger_accounts/ledger_journals/ledger_entries and payouts/payout_allocations design under a new ADR; balanced atomic journals, currency segregation and no mutable host balance."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1042,7 +1155,8 @@
           "story": "As an operator, I want reversals recorded so that reported balances remain accurate.",
           "acceptance": [
             "Refunds and disputes create compensating entries.",
-            "Guest and host views use provider-backed status."
+            "Guest and host views use provider-backed status.",
+            "Persist gifts.refunds/disputes with provider references and compensating journals; history is append-only and partial refunds never overwrite settled principal."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1055,7 +1169,8 @@
           "story": "As a founder, I want daily exception reporting so that money mismatches are caught promptly.",
           "acceptance": [
             "Compare signed provider events and ledger totals.",
-            "Investigate any unmatched charge or payout before expansion."
+            "Investigate any unmatched charge or payout before expansion.",
+            "Persist gifts.reconciliation_runs/items linking provider totals and unmatched payment/payout/journal records with resolution evidence."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1435,7 +1550,8 @@
           "story": "As a DigitalCardBox user or operator, I want to automate retention and deletion requests so the product can expand when justified.",
           "acceptance": [
             "Respect active event windows and lawful financial retention.",
-            "Scope, pricing and release gate are documented before implementation."
+            "Scope, pricing and release gate are documented before implementation.",
+            "Extend the October manual retention/deletion runbook into automation; preserve deletion tombstones across replay/restore and apply separately approved financial retention only when financial tables exist."
           ],
           "priority": "P2",
           "release": "Post-MVP",
@@ -1469,8 +1585,73 @@
           "estimate_hours": null
         }
       ]
+    },
+    {
+      "id": "DCB-E18",
+      "title": "Database foundations and migrations",
+      "phase": "MVP",
+      "outcome": "A managed PostgreSQL foundation stores customers, event-scoped guests and honest external gift history with constrained module tables and reliable transactional delivery",
+      "release": "October 2026 private MVP",
+      "stories": [
+        {
+          "id": "DCB-E18-S01",
+          "title": "Validate PostgreSQL deployment and migration workflow",
+          "story": "As a developer, I want a tested managed PostgreSQL connection and versioned migration workflow so that production persistence can be deployed and recovered safely.",
+          "acceptance": [
+            "Read ADR 0001 and ADR 0005; evaluate Supabase first and record selected provider, supported PostgreSQL version, auth integration, connection adapter, pooling/caching and backup capability after the deployed stack spike passes.",
+            "Verify a server-only connection and short multi-statement transaction in the chosen runtime; separate environments and migration/runtime credentials without browser secrets or cached authorization reads.",
+            "Establish one ordered module-owned migration history and synthetic-only seed workflow; empty apply, repeat apply and failed-migration recovery pass in an isolated environment.",
+            "Do not implement sign-in, event behavior, destination encryption or backup drills here; existing domain/security stories retain those responsibilities."
+          ],
+          "priority": "P0",
+          "release": "October 2026 private MVP",
+          "target_date": "2026-10-14",
+          "estimate_hours": 8
+        },
+        {
+          "id": "DCB-E18-S02",
+          "title": "Install module tables and scoped relational constraints",
+          "story": "As a developer, I want the canonical module tables and constraints so that customer, guest and gift data have one consistent storage contract.",
+          "acceptance": [
+            "Install the 23 October tables in docs/specs/DATA_MODEL.md with module ownership, opaque IDs, typed timestamps/money, same-event FKs, immutable history controls and reviewed indexes.",
+            "Enforce unique provider identity, active share link, one photo per submission, one route per event/service and route/current-version references; reject orphan and cross-event guest/media/route/snapshot references with synthetic data.",
+            "Persist event-scoped guests separately from sessions; no duplicate hosts/users/customers, notes/cards/CardVault content, generic transaction ledger or future Billing/integrated-payment migrations.",
+            "Provide narrow database permissions/policies tested with actual runtime credentials; domain adapters and business behavior remain in DCB-E02 through DCB-E07."
+          ],
+          "priority": "P0",
+          "release": "October 2026 private MVP",
+          "target_date": "2026-10-15",
+          "estimate_hours": 10,
+          "depends_on": [
+            "DCB-E18-S01"
+          ]
+        },
+        {
+          "id": "DCB-E18-S03",
+          "title": "Provide atomic units of work and durable delivery",
+          "story": "As a developer, I want reusable transaction, request deduplication and outbox primitives so that concurrent or retried work cannot lose or duplicate accepted domain changes.",
+          "acceptance": [
+            "Public module repository adapters share a composition-layer PostgreSQL unit of work with documented lock ordering and bounded deadlock/serialization retries; no private-table imports across modules.",
+            "Implement platform.idempotency_keys, outbox_messages and consumer_receipts with scoped request digest/resource references, atomic mutation/event commits, leases, bounded retries and source-revision checks.",
+            "Demonstrate concurrent same-key submission returns one resource, changed-body key reuse conflicts, rollback leaves no orphan outbox work, and crash/duplicate/out-of-order delivery cannot duplicate or regress a projection.",
+            "Domain stories own route/window/quota/consent/receipt checks using these primitives; backup stays DCB-E08-S05 and later provider-specific retry work stays DCB-E08-S06."
+          ],
+          "priority": "P0",
+          "release": "October 2026 private MVP",
+          "target_date": "2026-10-16",
+          "estimate_hours": 6,
+          "depends_on": [
+            "DCB-E18-S02"
+          ]
+        }
+      ]
     }
   ],
-  "october_target_hours": 156,
-  "october_target_date": "2026-10-31"
+  "october_target_hours": 180,
+  "october_target_date": "2026-10-31",
+  "october_week_hours": {
+    "12–18": 72,
+    "19–25": 54,
+    "26–31": 54
+  }
 }
