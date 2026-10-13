@@ -37,9 +37,10 @@ jobs:
         run: node scripts/deployment-plan.mjs
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
-          name: site-${{ github.run_id }}-${{ github.run_attempt }}
+          name: site-${{ github.run_id }}
           path: dist
           if-no-files-found: error
+          overwrite: true
           retention-days: 14
 
   deploy:
@@ -77,7 +78,7 @@ jobs:
           fi
       - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
         with:
-          name: site-${{ github.run_id }}-${{ github.run_attempt }}
+          name: site-${{ github.run_id }}
           path: dist
       - name: Deploy the checked build
         id: cloudflare
