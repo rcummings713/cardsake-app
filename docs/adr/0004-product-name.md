@@ -1,15 +1,19 @@
 # ADR 0004 Product name and project identifiers
 
-**Status:** Accepted. **Decision date:** 13 October 2026. **Owner:** founder.
+**Status:** Accepted. **Updated:** 13 October 2026. **Owner:** founder.
 
 ## Decision
 
-Use **DigitalCardBox** as the product name in the application, specifications, reference documents and GitHub project. Use `digitalcardbox-app` for the repository, local folder and npm package, and `digitalcardbox.example` for nonworking sample URLs. The GitHub board is **DigitalCardBox Development**.
+Use **TheDigitalCardBox** as the customer-facing product name. Page titles, visible copy, accessibility labels, logo lettering, contact-draft subjects and current product/reference documents use this spelling. Nonworking sample guest URLs use `thedigitalcardbox.example`. The friendly GitHub board title is **TheDigitalCardBox Development**.
 
-Rename the existing static Cloudflare demo worker to `digitalcardbox-app` in place. Its sample URL is `https://digitalcardbox-app.rcummings71300.workers.dev`. Keep its worker ID and deployed version intact during the rename. The checked-in Wrangler configuration serves built UI assets and enables branch previews; this does not select the production backend.
+Retain `digitalcardbox-app` for the repository, local folder and npm package, existing Cloudflare Worker names and URLs, `DCB-E##` / `DCB-E##-S##` backlog identifiers, and the `digitalcardbox-backlog` importer marker. These internal identities do not need another migration for the display-name change.
 
-Use `DCB-E##` and `DCB-E##-S##` for epic and story identifiers. Existing GitHub issue numbers, parent relationships, deadlines, estimates and acceptance criteria remain intact. The importer's stable HTML marker is `digitalcardbox-backlog`; existing issue markers migrate together with the local backlog to prevent duplicate imports.
+Keep the founder-supplied `support@digitalcardbox.com` and `info@digitalcardbox.com` contact addresses. A brand change does not provision replacement domains or mailboxes.
+
+Update the existing logo's main lettering using the founder's artwork as the edit target. Preserve the original HEIC source. The header and footer use the updated asset, a new brand query string to refresh cached logos, and alternative text with the current name.
 
 ## Consequences
 
-Rename all six maintained Word references while preserving their formatting and diagrams. Historical Git commits keep their original text. This naming decision changes no product behavior, payment rules, release scope or production stack decision.
+Rename the six maintained Word reference documents and update their product-name text while preserving document formatting and diagrams. Historical commits and operational token names retain their original text.
+
+This naming decision changes no payment rules, release scope, runtime or deployment-approval policy. Apply it to the existing feature UI and through a separate branding-only production release so other feature work is not promoted as part of the rename.
