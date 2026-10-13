@@ -1,4 +1,4 @@
-# Cardsake agent instructions
+# DigitalCardBox agent instructions
 
 Read `docs/specs/PRODUCT.md`, `SECURITY_PAYMENT.md`, `MVP_ACCEPTANCE.md` and the current GitHub issue before editing production behavior. Read ADR 0001 before choosing a production server runtime. The React starter and `public/prototype/index.html` contain **sample-only** data; do not treat their mock logic as server validation.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preview or import Cardsake epics and sub-issues into an existing GitHub repo.
+"""Preview or import DigitalCardBox epics and sub-issues into an existing GitHub repo.
 
 Requires GitHub CLI, authentication, and an existing repository. Dry run is
 the default. Stable HTML markers make repeated --apply runs idempotent.
@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
-MARKER = re.compile(r"<!-- cardsake-backlog: ([A-Z0-9-]+) -->")
+MARKER = re.compile(r"<!-- digitalcardbox-backlog: ([A-Z0-9-]+) -->")
 MILESTONE = "October 2026 private MVP"
 
 def gh(*args, input_text=None):
@@ -56,7 +56,7 @@ def ensure_milestone(repo):
        "-f", "description=Private MVP target: October 31 in America/New_York. Do not bypass release gates.")
 
 def body(item, epic=None):
-    parts = [f'<!-- cardsake-backlog: {item["id"]} -->', ""]
+    parts = [f'<!-- digitalcardbox-backlog: {item["id"]} -->', ""]
     if epic:
         parts += ["## User story", item["story"], "", "## Acceptance criteria"]
         parts += ["- " + x for x in item["acceptance"]]
@@ -93,7 +93,7 @@ def week(date):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--repo", required=True, help="OWNER/cardsake-app")
+    p.add_argument("--repo", required=True, help="OWNER/digitalcardbox-app")
     p.add_argument("--apply", action="store_true", help="Create issues; default is dry run")
     p.add_argument("--only-october", action="store_true", help="Import only October work first")
     args = p.parse_args()
@@ -104,7 +104,7 @@ def main():
              any(s["target_date"] for s in e["stories"])]
     count = sum(len([s for s in e["stories"] if not args.only_october or s["target_date"]])
                 for e in epics)
-    print(f'Cardsake: {len(epics)} epics, {count} stories for {args.repo}')
+    print(f'DigitalCardBox: {len(epics)} epics, {count} stories for {args.repo}')
     if not args.apply:
         print("Dry run only. Create and authenticate the private repo, then add --apply.")
         for e in epics:
