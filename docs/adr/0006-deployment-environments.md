@@ -1,6 +1,6 @@
 # ADR 0006 DEV, TEST and PROD deployment workflow
 
-**Status:** Accepted configuration; Cloudflare CI credentials and legacy-build cutover are prerequisites to automatic deployment.
+**Status:** Accepted configuration; Worker-specific CI tokens installed and DEV/TEST deployments verified. Legacy Cloudflare Git-build disconnection remains a cutover prerequisite.
 **Date:** 13 October 2026. **Owner:** rcummings713, sole repository contributor.
 
 ## Decision
@@ -14,7 +14,7 @@ Keep one GitHub repository and use GitHub Actions to build and route static UI d
 | `release/` prefix, including nested branch names | TEST | A named preview under `digitalcardbox-app-test` |
 | `master` | PROD | Existing `digitalcardbox-app` Worker, after the owner's manual approval |
 
-Other branches, pull request events and tags build without deployment. Hash-qualified preview names prevent similar, long or nested branch names from colliding or entering shell commands. PROD's GitHub environment permits only the `master` branch.
+Other branches, pull request events and tags build without deployment. Deleted-branch push events skip jobs so the default-branch fallback cannot select a production deployment. Hash-qualified preview names prevent similar, long or nested branch names from colliding or entering shell commands. PROD's GitHub environment permits only the `master` branch.
 
 Promote a tested release by merging it into `master`, then approving the PROD deployment. Master holds approved production source; the recorded deployment commit/version identifies what is actually live while a build or approval is pending. An outdated approval must fail when `master` has moved. A checked build artifact is passed to deployment rather than rebuilt after approval.
 
@@ -28,7 +28,7 @@ Preserve the existing customer URL and application source when installing the pi
 
 GitHub environments hold the account ID variable and environment secret `CLOUDFLARE_API_TOKEN`. Cloudflare's current local OAuth session is not an appropriate long-lived CI credential. The existing Git-connected Cloudflare automatic builds must be disabled so they cannot bypass the GitHub PROD approval. Do not delete or disable the live Worker.
 
-Workers, preview URLs and deployment targets are separate. This static setup adds no database, authentication, private storage, AI secret or live payment route. Future bindings and PostgreSQL instances must be explicitly scoped to the environment under DATA_MODEL.md and ADR 0005. Cloudflare API tokens are account scoped; distinct GitHub secret slots alone do not imply per-Worker credential isolation. Only trusted branch pushes deploy, and pull requests never receive deployment secrets.
+Workers, preview URLs and deployment targets are separate. This static setup adds no database, authentication, private storage, AI secret or live payment route. Future bindings and PostgreSQL instances must be explicitly scoped to the environment under DATA_MODEL.md and ADR 0005. Use three distinct account-owned API tokens scoped through Specified Workers / Individual Workers Editor to the matching existing DEV, TEST or PROD Worker. Cloudflare supports individual Worker scopes; distinct GitHub secret slots alone do not restrict an account-wide token. No whole-account or zone policy is granted for this static setup. The broad Edit Cloudflare Workers template is inappropriate when other projects share the account. Creating additional Workers or adding custom domain routes requires a separate, explicitly scoped setup action; it is not permission granted to the current deployment tokens. Only trusted branch pushes deploy, and pull requests never receive deployment secrets.
 
 ## Consequences
 

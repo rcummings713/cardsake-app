@@ -27,4 +27,4 @@ The $500 developer payment is a one-time, indefinitely fixed arrangement for pla
 
 ## Deployment environments
 
-[ADR 0006](../adr/0006-deployment-environments.md) separates the static UI's DEV feature previews, TEST develop/release deployments and owner-approved PROD deployments from master. The sole contributor can approve their own production deployment; no second-person review is required by this workflow. Environment setup does not implement the production backend or waive the MVP release gates.
+[ADR 0006](../adr/0006-deployment-environments.md) separates the static UI's DEV feature previews, TEST develop/release deployments and owner-approved PROD deployments from master. The sole contributor can approve their own production deployment; no second-person review is required by this workflow. Each GitHub environment holds a distinct account-owned token with Editor access only to its matching existing Cloudflare Worker. No account-wide or domain-route access is required for the current static UI. Environment setup does not implement the production backend or waive the MVP release gates.
