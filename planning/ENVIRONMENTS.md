@@ -11,11 +11,11 @@ The setup follows [ADR 0006](../docs/adr/0006-deployment-environments.md). The a
 
 Preview links and the exact deployed SHA appear in the Actions run and GitHub environment deployment. Preview names include a short hash of the full branch name. These addresses are disposable; no purchased domain is required.
 
-`master` starts from the current production history with pipeline files only, and is the default branch. The new `develop` branch starts from that same source. The previous `main` is retained as a frozen legacy reference until the Cloudflare Git-connected builds are disconnected; no feature UI is promoted during setup.
+`master` starts from the current production history with pipeline files only, and is the default branch. The new `develop` branch starts from that same source. The previous `main` is retained as a frozen legacy production reference. The owner confirmed the Cloudflare Git-connected builds were disconnected during cutover; no feature UI was promoted during setup.
 
 ## One-time Cloudflare setup
 
-The existing local Wrangler session can deploy Workers, but Cloudflare returned HTTP 403 for API-token management and Workers Builds management. The account owner must complete these settings:
+The existing local Wrangler session can deploy Workers, but Cloudflare returned HTTP 403 for API-token management and Workers Builds management. The account owner completed the following setup. Keep these instructions for token rotation or rebuilding an environment:
 
 1. Create three distinct account-owned API tokens using **Start from scratch**, with the policy scope **Specified Workers**. Select the Worker below and check **Developer Platform → Individual Workers → Editor** only. Store each token directly as `CLOUDFLARE_API_TOKEN` in its matching GitHub environment. Keep token values out of chat, source files and command arguments.
 
@@ -31,7 +31,7 @@ The existing local Wrangler session can deploy Workers, but Cloudflare returned 
 
 Each GitHub environment already has the public `CLOUDFLARE_ACCOUNT_ID` variable. Keep it as a variable; the separate API token is an environment secret. The CI workflow checks for credentials and stops with a clear error if they are missing. The Cloudflare OAuth token used on this Mac is never copied into GitHub Secrets.
 
-On 13 October 2026 the owner installed the three Worker-specific tokens. Retrying the existing [DEV run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38434931406) and [TEST run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38436361400) succeeded. Live checks verified the feature UI, contact addresses, logo, and deep links, and confirmed that production's active version remained unchanged. A temporary release branch also passed Build and Deploy TEST ([run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38479641570)), verifying TEST preview delivery with its restricted token; no PROD job was selected. The legacy Cloudflare Git build connection still requires owner disconnection; production deployment remains subject to the owner's own approval.
+On 13 October 2026 the owner installed the three Worker-specific tokens. Retrying the existing [DEV run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38434931406) and [TEST run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38436361400) succeeded. Live checks verified the feature UI, contact addresses, logo, and deep links, and confirmed that production's active version remained unchanged. A temporary release branch also passed Build and Deploy TEST ([run](https://github.com/rcummings713/digitalcardbox-app/actions/runs/38479641570)), verifying TEST preview delivery with its restricted token; no PROD job was selected. The owner subsequently confirmed that the production Worker's legacy Git build connection was disconnected while retaining the Worker. Direct Builds API verification remains unavailable to the local OAuth session (HTTP 403); the owner's dashboard confirmation is the cutover evidence. GitHub Actions is now the configured automatic deployment path. Production deployment remains subject to the owner's own approval; no PROD deployment was approved during setup.
 
 ## Daily work
 
