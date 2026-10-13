@@ -1,6 +1,6 @@
 # Authentication and external gift rules
 
-The October MVP handles **gift directions**, not gift money. Cash App, Venmo or Zelle handle transfers outside Cardsake. A host supplied handle, email or phone can still be personal information and must be protected. Neither a disclaimer nor a private repository makes a wrong destination harmless.
+The October MVP handles **gift directions**, not gift money. Cash App, Venmo or Zelle handle transfers outside DigitalCardBox. A host supplied handle, email or phone can still be personal information and must be protected. Neither a disclaimer nor a private repository makes a wrong destination harmless.
 
 ## Authentication and authorization
 
@@ -16,7 +16,7 @@ The October MVP handles **gift directions**, not gift money. Cash App, Venmo or 
 - Require double-entry, an exact recipient display, host review in the actual payment service and explicit confirmation. Version each active route and retain an audit trail.
 - Any edit pauses only that service; an old destination version cannot be used for a new handoff. A disabled service disappears immediately.
 - A guest chooses one route and sees the full host-supplied identifier and service. The acknowledgment resets on a route switch or version change. The guest must confirm the recipient again **inside the external service** before sending.
-- Cardsake cannot independently verify ownership of a host supplied external account or the success, reversal or recovery of an external transfer. Host confirmation is labeled as such; never display “paid” based on a redirect or a guest click.
+- DigitalCardBox cannot independently verify ownership of a host supplied external account or the success, reversal or recovery of an external transfer. Host confirmation is labeled as such; never display “paid” based on a redirect or a guest click.
 - Have counsel review terms and adjacent on-screen copy before opening a public pilot. Language may describe responsibility but must not promise immunity for a bug in this app.
 
 ## Data and operations

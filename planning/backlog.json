@@ -1,17 +1,17 @@
 {
-  "project": "Cardsake",
+  "project": "DigitalCardBox",
   "version": "2026-10-11",
   "source": "Current executive summary, financial summary, MVP timeline, user journey and system design",
   "note": "AI-drafted planning backlog. October private MVP is an aggressive 150-hour working target; verify all acceptance criteria before allowing live gift handoffs. Post-MVP stories are candidates, not release commitments.",
   "epics": [
     {
-      "id": "CS-E01",
+      "id": "DCB-E01",
       "title": "Disposable public prototype",
       "phase": "POC",
       "outcome": "A public demo URL shows the intended guest and host flow without real accounts or transfers",
       "stories": [
         {
-          "id": "CS-E01-S01",
+          "id": "DCB-E01-S01",
           "title": "Deploy static demo",
           "story": "As a founder, I want a temporary public URL so that I can show the prototype to hosts and guests.",
           "acceptance": [
@@ -24,7 +24,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E01-S02",
+          "id": "DCB-E01-S02",
           "title": "Make demo boundaries visible",
           "story": "As a visitor, I want to know this is a demo so that I do not try to send money or enter sensitive data.",
           "acceptance": [
@@ -37,7 +37,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E01-S03",
+          "id": "DCB-E01-S03",
           "title": "Make the demo link shareable",
           "story": "As a founder, I want the Copy link button to use the deployed URL so that testers reach the live prototype.",
           "acceptance": [
@@ -50,7 +50,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E01-S04",
+          "id": "DCB-E01-S04",
           "title": "Review the prototype on phones",
           "story": "As a founder, I want to test the flow on a phone so that screens are usable at an event.",
           "acceptance": [
@@ -63,7 +63,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E01-S05",
+          "id": "DCB-E01-S05",
           "title": "Capture tester feedback",
           "story": "As a founder, I want a simple feedback checklist so that the first hosted demo teaches us what to build.",
           "acceptance": [
@@ -79,13 +79,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E02",
+      "id": "DCB-E02",
       "title": "Identity and access",
       "phase": "MVP",
       "outcome": "Hosts control private event data while guests can contribute through scoped sessions",
       "stories": [
         {
-          "id": "CS-E02-S01",
+          "id": "DCB-E02-S01",
           "title": "Managed host sign-in",
           "story": "As a host, I want to sign in securely so that I can manage my event.",
           "acceptance": [
@@ -98,7 +98,7 @@
           "estimate_hours": 7
         },
         {
-          "id": "CS-E02-S02",
+          "id": "DCB-E02-S02",
           "title": "Enforce event ownership",
           "story": "As a host, I want only authorized hosts to see my private event data so that gifts and notes remain private.",
           "acceptance": [
@@ -111,7 +111,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E02-S03",
+          "id": "DCB-E02-S03",
           "title": "Protect sensitive host actions",
           "story": "As a host, I want a fresh sign-in for payment destination edits and exports so that stolen sessions have less power.",
           "acceptance": [
@@ -124,7 +124,7 @@
           "estimate_hours": 5
         },
         {
-          "id": "CS-E02-S04",
+          "id": "DCB-E02-S04",
           "title": "Issue scoped guest sessions",
           "story": "As a guest, I want to leave a note without an account so that contributing is easy.",
           "acceptance": [
@@ -137,7 +137,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E02-S05",
+          "id": "DCB-E02-S05",
           "title": "Alert hosts to destination changes",
           "story": "As a host, I want notice when a payment account changes so that I can catch unauthorized edits.",
           "acceptance": [
@@ -150,7 +150,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E02-S06",
+          "id": "DCB-E02-S06",
           "title": "Separate operator privileges",
           "story": "As an operator, I want limited support access so that production support does not expose unrelated private data.",
           "acceptance": [
@@ -166,13 +166,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E03",
+      "id": "DCB-E03",
       "title": "Event pages, links and time windows",
       "phase": "MVP",
       "outcome": "One stable event URL supports the full contribution and gift lifecycle",
       "stories": [
         {
-          "id": "CS-E03-S01",
+          "id": "DCB-E03-S01",
           "title": "Create dated event or occasion",
           "story": "As a host, I want to enter an event date, time zone and page type so that the opening and closing dates are accurate.",
           "acceptance": [
@@ -185,7 +185,7 @@
           "estimate_hours": 6
         },
         {
-          "id": "CS-E03-S02",
+          "id": "DCB-E03-S02",
           "title": "Publish one shareable URL",
           "story": "As a host, I want one link that I can text or email so that remote guests reach the event.",
           "acceptance": [
@@ -198,7 +198,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E03-S03",
+          "id": "DCB-E03-S03",
           "title": "Generate QR from the same URL",
           "story": "As a host, I want a printable QR so that in-person guests reach the same page.",
           "acceptance": [
@@ -211,7 +211,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E03-S04",
+          "id": "DCB-E03-S04",
           "title": "Open no earlier than six months",
           "story": "As a host, I want to open contributions up to six months before the event so that guests can participate early.",
           "acceptance": [
@@ -224,7 +224,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E03-S05",
+          "id": "DCB-E03-S05",
           "title": "Close book contributions after day 90",
           "story": "As a host, I want new notes, cards and photos to stop 90 days after the event so that the book can be finalized.",
           "acceptance": [
@@ -237,7 +237,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E03-S06",
+          "id": "DCB-E03-S06",
           "title": "Keep late wedding gifts open",
           "story": "As a guest, I want a gift-only route through month 12 after a wedding so that I can give late without changing the book.",
           "acceptance": [
@@ -250,7 +250,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E03-S07",
+          "id": "DCB-E03-S07",
           "title": "Show a closed landing page",
           "story": "As a visitor, I want a clear closed message so that I do not attempt an unavailable action.",
           "acceptance": [
@@ -263,7 +263,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E03-S08",
+          "id": "DCB-E03-S08",
           "title": "Prevent deadline reset and revoke links",
           "story": "As a host, I want to close or rotate a compromised link so that I can protect the event.",
           "acceptance": [
@@ -279,13 +279,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E04",
+      "id": "DCB-E04",
       "title": "Manual notes, cards and photos",
       "phase": "MVP",
       "outcome": "Guests can create personal content without AI or a cash gift",
       "stories": [
         {
-          "id": "CS-E04-S01",
+          "id": "DCB-E04-S01",
           "title": "Write and submit a note",
           "story": "As a guest, I want to write my own message so that I can contribute without AI.",
           "acceptance": [
@@ -298,7 +298,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E04-S02",
+          "id": "DCB-E04-S02",
           "title": "Style a card with templates",
           "story": "As a guest, I want to choose a layout, palette and motif so that my card feels personal.",
           "acceptance": [
@@ -311,7 +311,7 @@
           "estimate_hours": 5
         },
         {
-          "id": "CS-E04-S03",
+          "id": "DCB-E04-S03",
           "title": "Submit card without gift",
           "story": "As a guest, I want to submit a card without money so that participation is never tied to payment.",
           "acceptance": [
@@ -324,7 +324,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E04-S04",
+          "id": "DCB-E04-S04",
           "title": "Attach an optional photo",
           "story": "As a guest, I want to attach a photo so that the host can remember the occasion.",
           "acceptance": [
@@ -337,7 +337,7 @@
           "estimate_hours": 5
         },
         {
-          "id": "CS-E04-S05",
+          "id": "DCB-E04-S05",
           "title": "Choose book visibility",
           "story": "As a guest, I want to control whether my message appears in the shared book so that my preferences are respected.",
           "acceptance": [
@@ -350,7 +350,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E04-S06",
+          "id": "DCB-E04-S06",
           "title": "Hide and remove inappropriate content",
           "story": "As a host, I want to moderate guest content so that the book is safe to share.",
           "acceptance": [
@@ -366,13 +366,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E05",
+      "id": "DCB-E05",
       "title": "AI note and artwork assistance",
       "phase": "MVP",
       "outcome": "AI offers bounded editable choices while manual creation always remains available",
       "stories": [
         {
-          "id": "CS-E05-S01",
+          "id": "DCB-E05-S01",
           "title": "Generate three guided note choices",
           "story": "As a guest, I want to select relationship, tone and length so that AI suggests usable notes.",
           "acceptance": [
@@ -385,7 +385,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E05-S02",
+          "id": "DCB-E05-S02",
           "title": "Accept optional memory without invention",
           "story": "As a guest, I want to add a memory so that suggestions feel personal.",
           "acceptance": [
@@ -398,7 +398,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E05-S03",
+          "id": "DCB-E05-S03",
           "title": "Moderate and cap note requests",
           "story": "As an operator, I want AI requests bounded so that abuse and cost stay manageable.",
           "acceptance": [
@@ -411,7 +411,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E05-S04",
+          "id": "DCB-E05-S04",
           "title": "Keep manual composer on AI failure",
           "story": "As a guest, I want to finish my note if AI is unavailable so that I am never blocked.",
           "acceptance": [
@@ -424,7 +424,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E05-S05",
+          "id": "DCB-E05-S05",
           "title": "Generate two artwork variations",
           "story": "As a guest, I want up to two background options so that I can choose a look.",
           "acceptance": [
@@ -437,7 +437,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E05-S06",
+          "id": "DCB-E05-S06",
           "title": "Render readable card typography",
           "story": "As a guest, I want names and message text legible so that artwork does not distort them.",
           "acceptance": [
@@ -450,7 +450,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E05-S07",
+          "id": "DCB-E05-S07",
           "title": "Budget AI and preserve fallback",
           "story": "As a founder, I want request usage measured so that a free pilot does not create runaway costs.",
           "acceptance": [
@@ -466,13 +466,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E06",
+      "id": "DCB-E06",
       "title": "External cash gifts with guest choice",
       "phase": "MVP",
       "outcome": "Guests choose among host-confirmed services and pay the host outside the app",
       "stories": [
         {
-          "id": "CS-E06-S01",
+          "id": "DCB-E06-S01",
           "title": "Configure several payment services",
           "story": "As a host, I want to enable Cash App, Venmo and Zelle together so that guests can choose the service they use.",
           "acceptance": [
@@ -485,7 +485,7 @@
           "estimate_hours": 5
         },
         {
-          "id": "CS-E06-S02",
+          "id": "DCB-E06-S02",
           "title": "Double-enter and confirm each identifier",
           "story": "As a host, I want to enter each account twice so that I can catch typing errors.",
           "acceptance": [
@@ -498,7 +498,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E06-S03",
+          "id": "DCB-E06-S03",
           "title": "Pause only a changed service",
           "story": "As a host, I want to edit or disable one destination so that other services remain available.",
           "acceptance": [
@@ -511,7 +511,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E06-S04",
+          "id": "DCB-E06-S04",
           "title": "Let guest choose a service",
           "story": "As a guest, I want to select from the host’s enabled services so that I can use an app I have.",
           "acceptance": [
@@ -524,7 +524,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E06-S05",
+          "id": "DCB-E06-S05",
           "title": "Reset review when guest switches",
           "story": "As a guest, I want a fresh recipient check after switching services so that I do not approve the wrong destination.",
           "acceptance": [
@@ -537,7 +537,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E06-S06",
+          "id": "DCB-E06-S06",
           "title": "Show exact payee before leaving",
           "story": "As a guest, I want to see the host-supplied name and exact identifier so that I can compare the recipient in my payment app.",
           "acceptance": [
@@ -550,7 +550,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E06-S07",
+          "id": "DCB-E06-S07",
           "title": "Validate selected route atomically",
           "story": "As an operator, I want stale or cross-event gift intents rejected so that a switched or disabled account is not used.",
           "acceptance": [
@@ -563,7 +563,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E06-S08",
+          "id": "DCB-E06-S08",
           "title": "Keep external status honest",
           "story": "As a guest, I want the app to state what it knows so that a click is not mistaken for a successful payment.",
           "acceptance": [
@@ -576,7 +576,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E06-S09",
+          "id": "DCB-E06-S09",
           "title": "Let host mark a checked receipt",
           "story": "As a host, I want to mark a gift received after checking that provider account so that my private list is useful.",
           "acceptance": [
@@ -589,7 +589,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E06-S10",
+          "id": "DCB-E06-S10",
           "title": "Respect gifting deadlines",
           "story": "As a host, I want gift initiation blocked after close so that old links cannot be used indefinitely.",
           "acceptance": [
@@ -605,13 +605,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E07",
+      "id": "DCB-E07",
       "title": "Host dashboard, CardVault and event book",
       "phase": "MVP",
       "outcome": "The host keeps private memories and can export them after guest intake closes",
       "stories": [
         {
-          "id": "CS-E07-S01",
+          "id": "DCB-E07-S01",
           "title": "Show private host dashboard",
           "story": "As a host, I want to view entries and gift intent states so that I can manage my event.",
           "acceptance": [
@@ -624,7 +624,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E07-S02",
+          "id": "DCB-E07-S02",
           "title": "Create consented event book view",
           "story": "As a host, I want a book of allowed notes and photos so that I can revisit them.",
           "acceptance": [
@@ -637,7 +637,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E07-S03",
+          "id": "DCB-E07-S03",
           "title": "Export basic CardVault privately",
           "story": "As a host, I want a basic export even if I never buy an upgrade so that my memories remain accessible.",
           "acceptance": [
@@ -650,7 +650,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E07-S04",
+          "id": "DCB-E07-S04",
           "title": "Freeze book after day 90",
           "story": "As a host, I want a stable snapshot after new entries close so that book pricing and layout can be final.",
           "acceptance": [
@@ -663,7 +663,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E07-S05",
+          "id": "DCB-E07-S05",
           "title": "Preview book tiers without guest cap",
           "story": "As a host, I want the projected $15/$30/$79 price to follow included entry count so that no guest is blocked.",
           "acceptance": [
@@ -676,7 +676,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E07-S06",
+          "id": "DCB-E07-S06",
           "title": "Honor later removal requests",
           "story": "As a guest, I want an allowed removal request to affect later exports so that my content preferences are respected.",
           "acceptance": [
@@ -692,13 +692,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E08",
+      "id": "DCB-E08",
       "title": "Security, privacy and reliability",
       "phase": "MVP",
       "outcome": "Authentication, data boundaries and failure tests protect the pilot",
       "stories": [
         {
-          "id": "CS-E08-S01",
+          "id": "DCB-E08-S01",
           "title": "Authorize every server operation",
           "story": "As a host, I want another event’s users blocked from my data so that private content stays private.",
           "acceptance": [
@@ -711,7 +711,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E08-S02",
+          "id": "DCB-E08-S02",
           "title": "Protect browser requests",
           "story": "As an operator, I want common web attacks mitigated so that basic routes are not easy to abuse.",
           "acceptance": [
@@ -724,7 +724,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E08-S03",
+          "id": "DCB-E08-S03",
           "title": "Protect secrets and destinations",
           "story": "As a host, I want account identifiers and API keys handled carefully so that exposure is limited.",
           "acceptance": [
@@ -737,7 +737,7 @@
           "estimate_hours": 3
         },
         {
-          "id": "CS-E08-S04",
+          "id": "DCB-E08-S04",
           "title": "Limit abuse and uploads",
           "story": "As an operator, I want rate limits and file checks so that malicious traffic does not overwhelm the app.",
           "acceptance": [
@@ -750,7 +750,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E08-S05",
+          "id": "DCB-E08-S05",
           "title": "Test backup and restore",
           "story": "As a host, I want my accepted cards recoverable so that an outage does not erase the event.",
           "acceptance": [
@@ -763,7 +763,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E08-S06",
+          "id": "DCB-E08-S06",
           "title": "Make retried work safe",
           "story": "As an operator, I want jobs and callbacks to tolerate retries so that duplicate events do not create inconsistent state.",
           "acceptance": [
@@ -776,7 +776,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E08-S07",
+          "id": "DCB-E08-S07",
           "title": "Observe failures and spend",
           "story": "As a founder, I want error and usage dashboards so that I can detect problems during the pilot.",
           "acceptance": [
@@ -789,7 +789,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E08-S08",
+          "id": "DCB-E08-S08",
           "title": "Run mobile and accessibility checks",
           "story": "As a guest, I want screens I can use on a phone or keyboard so that I can participate at an event.",
           "acceptance": [
@@ -805,13 +805,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E09",
+      "id": "DCB-E09",
       "title": "Supervised pilot and learning",
       "phase": "MVP",
       "outcome": "Two supervised events validate completion, correct destinations and real demand",
       "stories": [
         {
-          "id": "CS-E09-S01",
+          "id": "DCB-E09-S01",
           "title": "Recruit pilot hosts",
           "story": "As a founder, I want a small set of suitable hosts so that I can test realistic occasions.",
           "acceptance": [
@@ -824,7 +824,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E09-S02",
+          "id": "DCB-E09-S02",
           "title": "Check every published payee",
           "story": "As a founder, I want to compare host-entered routes to their payment apps so that wrong destinations are caught before guests use them.",
           "acceptance": [
@@ -837,7 +837,7 @@
           "estimate_hours": 2
         },
         {
-          "id": "CS-E09-S03",
+          "id": "DCB-E09-S03",
           "title": "Run scripted money-state tests",
           "story": "As a founder, I want wrong-account and closure scenarios tested so that we do not falsely claim gifts were paid.",
           "acceptance": [
@@ -850,7 +850,7 @@
           "estimate_hours": 4
         },
         {
-          "id": "CS-E09-S04",
+          "id": "DCB-E09-S04",
           "title": "Measure guest completion",
           "story": "As a founder, I want separate conversion for notes, cards and gift handoffs so that I know where users struggle.",
           "acceptance": [
@@ -863,7 +863,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E09-S05",
+          "id": "DCB-E09-S05",
           "title": "Triage and decide next phase",
           "story": "As a founder, I want a release decision based on pilot evidence so that later costs are justified.",
           "acceptance": [
@@ -879,13 +879,13 @@
       "release": "October 2026 private MVP and follow-on"
     },
     {
-      "id": "CS-E10",
+      "id": "DCB-E10",
       "title": "Optional premium cards and books",
       "phase": "Later",
       "outcome": "Sell optional design upgrades and polished books without charging for basic participation",
       "stories": [
         {
-          "id": "CS-E10-S01",
+          "id": "DCB-E10-S01",
           "title": "Offer premium card design",
           "story": "As a guest, I want to see a $4.99 premium card option so that I can choose a richer design.",
           "acceptance": [
@@ -898,7 +898,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E10-S02",
+          "id": "DCB-E10-S02",
           "title": "Quote book price from included entries",
           "story": "As a host, I want a final server quote so that I pay for the correct $15/$30/$79 tier.",
           "acceptance": [
@@ -911,7 +911,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E10-S03",
+          "id": "DCB-E10-S03",
           "title": "Use hosted product checkout",
           "story": "As a buyer, I want to pay for a card or book through a hosted payment page so that the app does not collect my card details.",
           "acceptance": [
@@ -924,7 +924,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E10-S04",
+          "id": "DCB-E10-S04",
           "title": "Grant paid entitlement on signed event",
           "story": "As a buyer, I want access to the upgrade after payment so that I receive what I bought.",
           "acceptance": [
@@ -937,7 +937,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E10-S05",
+          "id": "DCB-E10-S05",
           "title": "Handle failed checkout and refund",
           "story": "As a buyer, I want an honest order status so that I know whether I was charged.",
           "acceptance": [
@@ -950,7 +950,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E10-S06",
+          "id": "DCB-E10-S06",
           "title": "Track product margins",
           "story": "As a founder, I want to compare revenue with processing, AI and media costs so that prices can be adjusted.",
           "acceptance": [
@@ -966,13 +966,13 @@
       "release": "Post-MVP"
     },
     {
-      "id": "CS-E11",
+      "id": "DCB-E11",
       "title": "Approved integrated gift payments",
       "phase": "Later",
       "outcome": "A provider-approved future route can process gift checkout with a reconciled ledger",
       "stories": [
         {
-          "id": "CS-E11-S01",
+          "id": "DCB-E11-S01",
           "title": "Secure written provider approval",
           "story": "As a founder, I want provider approval for the exact gifting flow so that checkout fits underwriting and legal roles.",
           "acceptance": [
@@ -985,7 +985,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S02",
+          "id": "DCB-E11-S02",
           "title": "Onboard recipient through provider",
           "story": "As a host, I want hosted identity and payout onboarding so that bank details never enter this app.",
           "acceptance": [
@@ -998,7 +998,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S03",
+          "id": "DCB-E11-S03",
           "title": "Show full fee and create checkout",
           "story": "As a guest, I want to see gift, service fee and total before paying so that the charge is clear.",
           "acceptance": [
@@ -1011,7 +1011,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S04",
+          "id": "DCB-E11-S04",
           "title": "Verify signed payment callbacks",
           "story": "As an operator, I want signed webhooks to update payment state so that browser redirects cannot claim a gift was paid.",
           "acceptance": [
@@ -1024,7 +1024,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S05",
+          "id": "DCB-E11-S05",
           "title": "Keep gift ledger and payout state",
           "story": "As a host, I want available and paid-out totals separated so that I understand where money stands.",
           "acceptance": [
@@ -1037,7 +1037,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S06",
+          "id": "DCB-E11-S06",
           "title": "Handle refunds and disputes",
           "story": "As an operator, I want reversals recorded so that reported balances remain accurate.",
           "acceptance": [
@@ -1050,7 +1050,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S07",
+          "id": "DCB-E11-S07",
           "title": "Reconcile provider and app daily",
           "story": "As a founder, I want daily exception reporting so that money mismatches are caught promptly.",
           "acceptance": [
@@ -1063,7 +1063,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E11-S08",
+          "id": "DCB-E11-S08",
           "title": "Retain external route as independent choice",
           "story": "As a host, I want approved integrated checkout to coexist safely with external services if supported so that migration is gradual.",
           "acceptance": [
@@ -1079,13 +1079,13 @@
       "release": "Post-MVP"
     },
     {
-      "id": "CS-E12",
+      "id": "DCB-E12",
       "title": "Conditional music, GIFs and licensed artwork",
       "phase": "Later",
       "outcome": "Media enriches cards only when the specific distribution rights and cost are approved",
       "stories": [
         {
-          "id": "CS-E12-S01",
+          "id": "DCB-E12-S01",
           "title": "Obtain music use rights",
           "story": "As a founder, I want a contract for short clips so that card and note playback is permitted.",
           "acceptance": [
@@ -1098,7 +1098,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E12-S02",
+          "id": "DCB-E12-S02",
           "title": "Offer licensed clip picker",
           "story": "As a guest, I want an optional song snippet so that my card evokes a memory.",
           "acceptance": [
@@ -1111,7 +1111,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E12-S03",
+          "id": "DCB-E12-S03",
           "title": "Recheck rights at playback",
           "story": "As a recipient, I want a card to remain viewable if a song expires so that memories are not lost.",
           "acceptance": [
@@ -1124,7 +1124,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E12-S04",
+          "id": "DCB-E12-S04",
           "title": "Control audio in exports",
           "story": "As a host, I want book exports to honor music rights so that I can share them safely.",
           "acceptance": [
@@ -1137,7 +1137,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E12-S05",
+          "id": "DCB-E12-S05",
           "title": "License art templates and GIFs",
           "story": "As a founder, I want approved assets so that generated and selected visuals can be displayed and retained.",
           "acceptance": [
@@ -1150,7 +1150,7 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E12-S06",
+          "id": "DCB-E12-S06",
           "title": "Keep media optional",
           "story": "As a guest, I want a complete static card so that licensing or media failures do not block my note or gift.",
           "acceptance": [
@@ -1166,16 +1166,16 @@
       "release": "Post-MVP"
     },
     {
-      "id": "CS-E13",
+      "id": "DCB-E13",
       "title": "Advanced AI and personalization",
       "phase": "Later",
       "release": "Post-MVP",
       "outcome": "Assess evidence, vendor terms, cost and risk before scheduling this extension.",
       "stories": [
         {
-          "id": "CS-E13-S01",
+          "id": "DCB-E13-S01",
           "title": "Edit an existing image with consent",
-          "story": "As a Cardsake user or operator, I want to edit an existing image with consent so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to edit an existing image with consent so the product can expand when justified.",
           "acceptance": [
             "Reference-photo transformations need explicit owner consent, moderation, provenance and deletion.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1186,9 +1186,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E13-S02",
+          "id": "DCB-E13-S02",
           "title": "Learn a private writing voice by opt in",
-          "story": "As a Cardsake user or operator, I want to learn a private writing voice by opt in so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to learn a private writing voice by opt in so the product can expand when justified.",
           "acceptance": [
             "Personal profile is optional, scoped, deletable and never mixed with other accounts.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1199,9 +1199,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E13-S03",
+          "id": "DCB-E13-S03",
           "title": "Compare generated designs before spending",
-          "story": "As a Cardsake user or operator, I want to compare generated designs before spending so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to compare generated designs before spending so the product can expand when justified.",
           "acceptance": [
             "Show cost and output limits before starting image work.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1212,9 +1212,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E13-S04",
+          "id": "DCB-E13-S04",
           "title": "Expand bounded occasion templates",
-          "story": "As a Cardsake user or operator, I want to expand bounded occasion templates so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to expand bounded occasion templates so the product can expand when justified.",
           "acceptance": [
             "Templates cover birthdays, graduations, holidays and sympathy with manual fallback.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1227,16 +1227,16 @@
       ]
     },
     {
-      "id": "CS-E14",
+      "id": "DCB-E14",
       "title": "Growth and reminder features",
       "phase": "Later",
       "release": "Post-MVP",
       "outcome": "Assess evidence, vendor terms, cost and risk before scheduling this extension.",
       "stories": [
         {
-          "id": "CS-E14-S01",
+          "id": "DCB-E14-S01",
           "title": "Let a recipient schedule future occasions",
-          "story": "As a Cardsake user or operator, I want to let a recipient schedule future occasions so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to let a recipient schedule future occasions so the product can expand when justified.",
           "acceptance": [
             "Reminders are opt in with a clear off switch and no contact scraping.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1247,9 +1247,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E14-S02",
+          "id": "DCB-E14-S02",
           "title": "Track guest to host referrals",
-          "story": "As a Cardsake user or operator, I want to track guest to host referrals so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to track guest to host referrals so the product can expand when justified.",
           "acceptance": [
             "Measure invitations without exposing guest identities to unrelated events.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1260,9 +1260,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E14-S03",
+          "id": "DCB-E14-S03",
           "title": "Offer planner and venue referrals",
-          "story": "As a Cardsake user or operator, I want to offer planner and venue referrals so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to offer planner and venue referrals so the product can expand when justified.",
           "acceptance": [
             "Attribute referrals with explicit consent and measurable terms.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1273,9 +1273,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E14-S04",
+          "id": "DCB-E14-S04",
           "title": "Create a private relationship timeline",
-          "story": "As a Cardsake user or operator, I want to create a private relationship timeline so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to create a private relationship timeline so the product can expand when justified.",
           "acceptance": [
             "Only opted-in contacts and occasions appear, with export and deletion.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1288,16 +1288,16 @@
       ]
     },
     {
-      "id": "CS-E15",
+      "id": "DCB-E15",
       "title": "Media and physical keepsakes",
       "phase": "Later",
       "release": "Post-MVP",
       "outcome": "Assess evidence, vendor terms, cost and risk before scheduling this extension.",
       "stories": [
         {
-          "id": "CS-E15-S01",
+          "id": "DCB-E15-S01",
           "title": "Support consented video memories",
-          "story": "As a Cardsake user or operator, I want to support consented video memories so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to support consented video memories so the product can expand when justified.",
           "acceptance": [
             "Enforce upload size, duration, moderation, storage and retention limits.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1308,9 +1308,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E15-S02",
+          "id": "DCB-E15-S02",
           "title": "Offer a printed event book",
-          "story": "As a Cardsake user or operator, I want to offer a printed event book so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to offer a printed event book so the product can expand when justified.",
           "acceptance": [
             "Quote printing, shipping, taxes, returns and proof approval before sale.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1321,9 +1321,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E15-S03",
+          "id": "DCB-E15-S03",
           "title": "Offer reusable design marketplace",
-          "story": "As a Cardsake user or operator, I want to offer reusable design marketplace so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to offer reusable design marketplace so the product can expand when justified.",
           "acceptance": [
             "Record commercial template and derivative rights for each asset.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1334,9 +1334,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E15-S04",
+          "id": "DCB-E15-S04",
           "title": "Expand GIF library safely",
-          "story": "As a Cardsake user or operator, I want to expand gif library safely so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to expand gif library safely so the product can expand when justified.",
           "acceptance": [
             "Use a licensed API/catalog and label attribution and allowed reuse.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1349,16 +1349,16 @@
       ]
     },
     {
-      "id": "CS-E16",
+      "id": "DCB-E16",
       "title": "New gift rails and markets",
       "phase": "Later",
       "release": "Post-MVP",
       "outcome": "Assess evidence, vendor terms, cost and risk before scheduling this extension.",
       "stories": [
         {
-          "id": "CS-E16-S01",
+          "id": "DCB-E16-S01",
           "title": "Evaluate pooled group gifts",
-          "story": "As a Cardsake user or operator, I want to evaluate pooled group gifts so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to evaluate pooled group gifts so the product can expand when justified.",
           "acceptance": [
             "Map custody, fee, refund and dispute duties before collecting principal.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1369,9 +1369,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E16-S02",
+          "id": "DCB-E16-S02",
           "title": "Evaluate international gifts",
-          "story": "As a Cardsake user or operator, I want to evaluate international gifts so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to evaluate international gifts so the product can expand when justified.",
           "acceptance": [
             "Research country limits, currencies, tax and provider approval before build.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1382,9 +1382,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E16-S03",
+          "id": "DCB-E16-S03",
           "title": "Offer more provider approved external routes",
-          "story": "As a Cardsake user or operator, I want to offer more provider approved external routes so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to offer more provider approved external routes so the product can expand when justified.",
           "acceptance": [
             "Add only allowlisted methods with host confirmation and exact guest display.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1395,9 +1395,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E16-S04",
+          "id": "DCB-E16-S04",
           "title": "Add native mobile applications if justified",
-          "story": "As a Cardsake user or operator, I want to add native mobile applications if justified so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to add native mobile applications if justified so the product can expand when justified.",
           "acceptance": [
             "Use measured repeat use to justify separate mobile releases.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1410,16 +1410,16 @@
       ]
     },
     {
-      "id": "CS-E17",
+      "id": "DCB-E17",
       "title": "Operations and analytics",
       "phase": "Later",
       "release": "Post-MVP",
       "outcome": "Assess evidence, vendor terms, cost and risk before scheduling this extension.",
       "stories": [
         {
-          "id": "CS-E17-S01",
+          "id": "DCB-E17-S01",
           "title": "Build consent-safe analytics dashboard",
-          "story": "As a Cardsake user or operator, I want to build consent-safe analytics dashboard so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to build consent-safe analytics dashboard so the product can expand when justified.",
           "acceptance": [
             "Track funnel and spend without storing unnecessary message content.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1430,9 +1430,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E17-S02",
+          "id": "DCB-E17-S02",
           "title": "Automate retention and deletion requests",
-          "story": "As a Cardsake user or operator, I want to automate retention and deletion requests so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to automate retention and deletion requests so the product can expand when justified.",
           "acceptance": [
             "Respect active event windows and lawful financial retention.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1443,9 +1443,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E17-S03",
+          "id": "DCB-E17-S03",
           "title": "Document incident response and support flows",
-          "story": "As a Cardsake user or operator, I want to document incident response and support flows so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to document incident response and support flows so the product can expand when justified.",
           "acceptance": [
             "Handle account takeover, wrong-payee reports and provider disputes with owners.",
             "Scope, pricing and release gate are documented before implementation."
@@ -1456,9 +1456,9 @@
           "estimate_hours": null
         },
         {
-          "id": "CS-E17-S04",
+          "id": "DCB-E17-S04",
           "title": "Add scalability and recovery drills",
-          "story": "As a Cardsake user or operator, I want to add scalability and recovery drills so the product can expand when justified.",
+          "story": "As a DigitalCardBox user or operator, I want to add scalability and recovery drills so the product can expand when justified.",
           "acceptance": [
             "Load test, restore, queued jobs and independent module health checks.",
             "Scope, pricing and release gate are documented before implementation."

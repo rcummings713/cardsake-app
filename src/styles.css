@@ -7,7 +7,7 @@ button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 3px sol
 button:disabled { opacity: .5; cursor: not-allowed; }
 a { color: #744b37; }
 .shell { min-height: 100vh; display: flex; flex-direction: column; }
-.site-header { display: flex; align-items: center; justify-content: space-between; padding: 18px max(24px, calc((100vw - 1120px) / 2)); background: white; }
+.site-header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 18px max(24px, calc((100vw - 1120px) / 2)); background: white; }
 .wordmark { border: 0; background: transparent; color: #32332e; font-size: 29px; font-weight: 800; letter-spacing: -.07em; }
 .wordmark span { color: #c47755; }
 nav { display: flex; gap: 8px; }
