@@ -1,4 +1,4 @@
-# DigitalCardBox development backlog
+# TheDigitalCardBox development backlog
 
 **October private MVP target:** 31 October 2026 · 156 focused developer hours across 51 stories.
 **Status:** AI-drafted estimates; release depends on acceptance gates, not date alone.
@@ -368,16 +368,16 @@ Release: Post-MVP. Media enriches cards only when the specific distribution righ
 
 Release: Post-MVP. Assess evidence, vendor terms, cost and risk before scheduling this extension.
 
-- **DCB-E13-S01 Edit an existing image with consent** — Post-MVP. As a DigitalCardBox user or operator, I want to edit an existing image with consent so the product can expand when justified.
+- **DCB-E13-S01 Edit an existing image with consent** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to edit an existing image with consent so the product can expand when justified.
   - Reference-photo transformations need explicit owner consent, moderation, provenance and deletion.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E13-S02 Learn a private writing voice by opt in** — Post-MVP. As a DigitalCardBox user or operator, I want to learn a private writing voice by opt in so the product can expand when justified.
+- **DCB-E13-S02 Learn a private writing voice by opt in** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to learn a private writing voice by opt in so the product can expand when justified.
   - Personal profile is optional, scoped, deletable and never mixed with other accounts.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E13-S03 Compare generated designs before spending** — Post-MVP. As a DigitalCardBox user or operator, I want to compare generated designs before spending so the product can expand when justified.
+- **DCB-E13-S03 Compare generated designs before spending** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to compare generated designs before spending so the product can expand when justified.
   - Show cost and output limits before starting image work.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E13-S04 Expand bounded occasion templates** — Post-MVP. As a DigitalCardBox user or operator, I want to expand bounded occasion templates so the product can expand when justified.
+- **DCB-E13-S04 Expand bounded occasion templates** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to expand bounded occasion templates so the product can expand when justified.
   - Templates cover birthdays, graduations, holidays and sympathy with manual fallback.
   - Scope, pricing and release gate are documented before implementation.
 
@@ -385,16 +385,16 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 
 Release: Post-MVP. Assess evidence, vendor terms, cost and risk before scheduling this extension.
 
-- **DCB-E14-S01 Let a recipient schedule future occasions** — Post-MVP. As a DigitalCardBox user or operator, I want to let a recipient schedule future occasions so the product can expand when justified.
+- **DCB-E14-S01 Let a recipient schedule future occasions** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to let a recipient schedule future occasions so the product can expand when justified.
   - Reminders are opt in with a clear off switch and no contact scraping.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E14-S02 Track guest to host referrals** — Post-MVP. As a DigitalCardBox user or operator, I want to track guest to host referrals so the product can expand when justified.
+- **DCB-E14-S02 Track guest to host referrals** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to track guest to host referrals so the product can expand when justified.
   - Measure invitations without exposing guest identities to unrelated events.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E14-S03 Offer planner and venue referrals** — Post-MVP. As a DigitalCardBox user or operator, I want to offer planner and venue referrals so the product can expand when justified.
+- **DCB-E14-S03 Offer planner and venue referrals** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to offer planner and venue referrals so the product can expand when justified.
   - Attribute referrals with explicit consent and measurable terms.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E14-S04 Create a private relationship timeline** — Post-MVP. As a DigitalCardBox user or operator, I want to create a private relationship timeline so the product can expand when justified.
+- **DCB-E14-S04 Create a private relationship timeline** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to create a private relationship timeline so the product can expand when justified.
   - Only opted-in contacts and occasions appear, with export and deletion.
   - Scope, pricing and release gate are documented before implementation.
 
@@ -402,16 +402,16 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 
 Release: Post-MVP. Assess evidence, vendor terms, cost and risk before scheduling this extension.
 
-- **DCB-E15-S01 Support consented video memories** — Post-MVP. As a DigitalCardBox user or operator, I want to support consented video memories so the product can expand when justified.
+- **DCB-E15-S01 Support consented video memories** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to support consented video memories so the product can expand when justified.
   - Enforce upload size, duration, moderation, storage and retention limits.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E15-S02 Offer a printed event book** — Post-MVP. As a DigitalCardBox user or operator, I want to offer a printed event book so the product can expand when justified.
+- **DCB-E15-S02 Offer a printed event book** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to offer a printed event book so the product can expand when justified.
   - Quote printing, shipping, taxes, returns and proof approval before sale.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E15-S03 Offer reusable design marketplace** — Post-MVP. As a DigitalCardBox user or operator, I want to offer reusable design marketplace so the product can expand when justified.
+- **DCB-E15-S03 Offer reusable design marketplace** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to offer reusable design marketplace so the product can expand when justified.
   - Record commercial template and derivative rights for each asset.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E15-S04 Expand GIF library safely** — Post-MVP. As a DigitalCardBox user or operator, I want to expand gif library safely so the product can expand when justified.
+- **DCB-E15-S04 Expand GIF library safely** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to expand gif library safely so the product can expand when justified.
   - Use a licensed API/catalog and label attribution and allowed reuse.
   - Scope, pricing and release gate are documented before implementation.
 
@@ -419,16 +419,16 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 
 Release: Post-MVP. Assess evidence, vendor terms, cost and risk before scheduling this extension.
 
-- **DCB-E16-S01 Evaluate pooled group gifts** — Post-MVP. As a DigitalCardBox user or operator, I want to evaluate pooled group gifts so the product can expand when justified.
+- **DCB-E16-S01 Evaluate pooled group gifts** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to evaluate pooled group gifts so the product can expand when justified.
   - Map custody, fee, refund and dispute duties before collecting principal.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E16-S02 Evaluate international gifts** — Post-MVP. As a DigitalCardBox user or operator, I want to evaluate international gifts so the product can expand when justified.
+- **DCB-E16-S02 Evaluate international gifts** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to evaluate international gifts so the product can expand when justified.
   - Research country limits, currencies, tax and provider approval before build.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E16-S03 Offer more provider approved external routes** — Post-MVP. As a DigitalCardBox user or operator, I want to offer more provider approved external routes so the product can expand when justified.
+- **DCB-E16-S03 Offer more provider approved external routes** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to offer more provider approved external routes so the product can expand when justified.
   - Add only allowlisted methods with host confirmation and exact guest display.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E16-S04 Add native mobile applications if justified** — Post-MVP. As a DigitalCardBox user or operator, I want to add native mobile applications if justified so the product can expand when justified.
+- **DCB-E16-S04 Add native mobile applications if justified** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to add native mobile applications if justified so the product can expand when justified.
   - Use measured repeat use to justify separate mobile releases.
   - Scope, pricing and release gate are documented before implementation.
 
@@ -436,15 +436,15 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 
 Release: Post-MVP. Assess evidence, vendor terms, cost and risk before scheduling this extension.
 
-- **DCB-E17-S01 Build consent-safe analytics dashboard** — Post-MVP. As a DigitalCardBox user or operator, I want to build consent-safe analytics dashboard so the product can expand when justified.
+- **DCB-E17-S01 Build consent-safe analytics dashboard** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to build consent-safe analytics dashboard so the product can expand when justified.
   - Track funnel and spend without storing unnecessary message content.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E17-S02 Automate retention and deletion requests** — Post-MVP. As a DigitalCardBox user or operator, I want to automate retention and deletion requests so the product can expand when justified.
+- **DCB-E17-S02 Automate retention and deletion requests** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to automate retention and deletion requests so the product can expand when justified.
   - Respect active event windows and lawful financial retention.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E17-S03 Document incident response and support flows** — Post-MVP. As a DigitalCardBox user or operator, I want to document incident response and support flows so the product can expand when justified.
+- **DCB-E17-S03 Document incident response and support flows** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to document incident response and support flows so the product can expand when justified.
   - Handle account takeover, wrong-payee reports and provider disputes with owners.
   - Scope, pricing and release gate are documented before implementation.
-- **DCB-E17-S04 Add scalability and recovery drills** — Post-MVP. As a DigitalCardBox user or operator, I want to add scalability and recovery drills so the product can expand when justified.
+- **DCB-E17-S04 Add scalability and recovery drills** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to add scalability and recovery drills so the product can expand when justified.
   - Load test, restore, queued jobs and independent module health checks.
   - Scope, pricing and release gate are documented before implementation.

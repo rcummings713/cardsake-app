@@ -1,4 +1,4 @@
-# Create the DigitalCardBox repository and board
+# Create TheDigitalCardBox repository and board
 
 These commands run **on your Mac** in the unzipped `digitalcardbox-app` folder. They create a private GitHub repository and issue backlog only when you execute them; this download is not linked to an account.
 
@@ -21,7 +21,7 @@ In that same folder:
 ```bash
 git init
 git add .
-git commit -m "Start DigitalCardBox MVP"
+git commit -m "Start TheDigitalCardBox MVP"
 gh auth login
 gh repo create digitalcardbox-app --private --source=. --remote=origin --push
 ```
@@ -42,7 +42,7 @@ The first command is a dry run. The second creates October parent epics and date
 
 ## Create the board
 
-1. On GitHub, click your avatar → **Your projects** → **New project** → **Board**. Name it **DigitalCardBox Development**.
+1. On GitHub, click your avatar → **Your projects** → **New project** → **Board**. Name it **TheDigitalCardBox Development**.
 2. Choose **Import items from repository** and select `digitalcardbox-app`. If you already made an empty board, use **Add item from repository** to bring issues in.
 3. Use **Todo**, **In Progress**, **In Review** and **Done** as Status columns. Add a separate Roadmap or Table view if you want to inspect dates and estimates.
 4. Save a view named **October MVP** filtered to `label:release:october`; save **Later backlog** filtered to `label:release:post-mvp`. Week labels `week:oct12`, `week:oct19` and `week:oct26` show the three delivery blocks.

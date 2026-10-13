@@ -1,8 +1,8 @@
-# DigitalCardBox product specification
+# TheDigitalCardBox product specification
 
 **Version:** 13 October 2026. **Target:** private external-wallet MVP by 31 October 2026.
 
-The product name is **DigitalCardBox**. See [ADR 0004](../adr/0004-product-name.md) for repository and backlog naming.
+The product name is **TheDigitalCardBox**. See [ADR 0004](../adr/0004-product-name.md) for repository and backlog naming.
 
 ## Product promise
 

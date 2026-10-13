@@ -1,4 +1,4 @@
-# DigitalCardBox October 2026 delivery plan
+# TheDigitalCardBox October 2026 delivery plan
 
 The private MVP target is **Saturday, October 31, 2026**. The issue backlog assigns **156 focused developer hours** to 51 October stories, roughly 52 hours per week over the three weeks starting Monday, October 12. This is aggressive for one developer; AI-assisted drafts do not remove integration and security testing. The fixed development payment remains **$500 total**, independent of engineering hours.
 
