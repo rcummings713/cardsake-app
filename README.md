@@ -35,3 +35,7 @@ The specifications describe the October release. Reference Word files also discu
 Use the separate [GitHub setup guide](planning/GITHUB_SETUP.md). Create one **private** repository, import issues and sub-issues, then create a GitHub Projects Board and import those issues. The importer does not run unless you pass `--apply`.
 
 For a disposable public **sample UI** URL, follow [the static preview guide](planning/DEPLOY_DISPOSABLE_POC.md).
+
+## Deployment environments
+
+See [the environment runbook](planning/ENVIRONMENTS.md) and [ADR 0006](docs/adr/0006-deployment-environments.md) for DEV feature previews, TEST develop/release deployments, and owner-approved PROD deployments from master. Self-review is enabled; no second contributor is required.

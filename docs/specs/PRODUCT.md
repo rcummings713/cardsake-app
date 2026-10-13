@@ -24,3 +24,7 @@ The host creates an event or occasion page and shares a single link or QR. Guest
 Supervised live occasions and optional generated backgrounds extend the free pilot. Later candidates include $4.99 premium cards, $15/$30/$79 polished event books priced from 0–99 / 100–299 / 300+ included entries after day 90, hosted product checkout, approved integrated cash processing, licensed art/GIFs and music clips, advanced AI editing, reminders, printed books, video, referrals, pooled gifts, international rails and native mobile apps. The [backlog](../../planning/backlog.md) retains all candidates.
 
 The $500 developer payment is a one-time, indefinitely fixed arrangement for planned code work. It is separate from vendor, hosting, artwork, counsel, licensing and payment-service costs.
+
+## Deployment environments
+
+[ADR 0006](../adr/0006-deployment-environments.md) separates the static UI's DEV feature previews, TEST develop/release deployments and owner-approved PROD deployments from master. The sole contributor can approve their own production deployment; no second-person review is required by this workflow. Environment setup does not implement the production backend or waive the MVP release gates.

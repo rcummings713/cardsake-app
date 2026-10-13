@@ -8,3 +8,5 @@ dist/
 coverage/
 .wrangler/
 .idea/
+__pycache__/
+*.pyc

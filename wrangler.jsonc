@@ -6,5 +6,34 @@
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
-  "previews": {}
+  "previews": {},
+  "env": {
+    "dev": {
+      "name": "digitalcardbox-app-dev",
+      "workers_dev": true,
+      "assets": {
+        "directory": "./dist",
+        "not_found_handling": "single-page-application"
+      },
+      "previews": {}
+    },
+    "test": {
+      "name": "digitalcardbox-app-test",
+      "workers_dev": true,
+      "assets": {
+        "directory": "./dist",
+        "not_found_handling": "single-page-application"
+      },
+      "previews": {}
+    },
+    "prod": {
+      "name": "digitalcardbox-app",
+      "workers_dev": true,
+      "assets": {
+        "directory": "./dist",
+        "not_found_handling": "single-page-application"
+      },
+      "previews": {}
+    }
+  }
 }
