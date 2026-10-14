@@ -27,7 +27,7 @@ for epic in data["epics"]:
             key = "12–18" if d.day <= 18 else "19–25" if d.day <= 25 else "26–31"
             week_hours[key] += story["estimate_hours"]
         else:
-            assert story["release"] == "Post-MVP" and story["estimate_hours"] is None
+            assert story["release"] in ("Post-MVP", "UI design review") and story["estimate_hours"] is None
 assert hours == data["october_target_hours"], hours
 assert week_hours == data['october_week_hours'], week_hours
 

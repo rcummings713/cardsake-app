@@ -1,5 +1,8 @@
 # Documentation map
 
+- `specs/UI_DESIGN.md`: current application pages and UI-first review boundaries.
+- `../planning/UI_REVIEW.md`: owner review sequence, decisions and issue mapping.
+- `adr/0007-ui-first-design-review.md`: account-free UI before backend implementation.
 - `specs/PRODUCT.md`: product behavior and October boundaries.
 - `specs/MVP_ACCEPTANCE.md`: release gates and test matrix.
 - `specs/SECURITY_PAYMENT.md`: authentication, external gift handoff and privacy rules.

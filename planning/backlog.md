@@ -95,6 +95,7 @@ Release: October 2026 private MVP and follow-on. Hosts control private event dat
   - Use a managed identity provider and verified email.
   - Server stores provider subject and role, not a custom password database.
   - Persist one identity.customers record per (auth_issuer, auth_subject); synchronize verified email without using email as ownership identity or storing passwords.
+  - Review Apple, Google, Amazon and manual email account entry with an account-free UI bypass during design review; provider eligibility/configuration and verified server sessions remain required before launch. Never collect a password in the local UI.
   - **Blocked by:** DCB-E18-S02
 - **DCB-E02-S02 Enforce event ownership** — October 2026 private MVP. As a host, I want only authorized hosts to see my private event data so that gifts and notes remain private.
   - Every host read and write checks ownership or explicit membership on the server.
@@ -132,6 +133,7 @@ Release: October 2026 private MVP and follow-on. One stable event URL supports t
   - Generate an opaque, unguessable slug.
   - Public page exposes only approved event fields.
   - Persist events.share_links with unique token hash, encrypted recoverable secret and generation; enforce one unrevoked link per event.
+  - Guest pages are invitation-only, with no public event directory or guest-event link in public navigation; host preview uses the same event route. Frontend routing never substitutes for server link authorization.
   - **Blocked by:** DCB-E18-S02
 - **DCB-E03-S03 Generate QR from the same URL** — October 2026 private MVP. As a host, I want a printable QR so that in-person guests reach the same page.
   - QR encodes only the stable event URL, never a wallet identifier.
@@ -167,6 +169,7 @@ Release: October 2026 private MVP and follow-on. Guests can create personal cont
   - A static template is immediately available.
   - Final text is rendered separately from background art for readability.
   - Use the same cards.submissions record for note/card kinds; retain template key/version and bounded style JSON instead of duplicating card text or adding an October template catalog.
+  - Review original vector card art, premium typography, full readable long notes and an optional searchable local GIF collection; no generated-image dependency in the core card collection.
   - **Blocked by:** DCB-E18-S02
 - **DCB-E04-S03 Submit card without gift** — October 2026 private MVP. As a guest, I want to submit a card without money so that participation is never tied to payment.
   - Card creation does not require a gift ID.
@@ -261,11 +264,17 @@ Release: October 2026 private MVP and follow-on. Guests choose among host-confir
   - UI labels it host marked received.
   - Host review records actor and time without claiming provider confirmation.
   - Append gifts.gift_events host confirmation with actor/time and reviewed version; permit an audited corrective revocation and keep host confirmation distinct from provider verification.
+  - Show guest known name, optional payment-app alias, intended amount, linked card and opaque matching reference. Treat these as unverified clues; names or references alone never establish receipt.
   - **Blocked by:** DCB-E18-S03
 - **DCB-E06-S10 Respect gifting deadlines** — October 2026 private MVP. As a host, I want gift initiation blocked after close so that old links cannot be used indefinitely.
   - Active and wedding gift-only states allow new intents.
   - Final closure rejects new intents while permitting prior reconciliation.
   - Check the fresh event clock inside the transaction after locking; final closure blocks new handoffs without deleting prior intents or blocking host reconciliation.
+- **DCB-E06-S11 Investigate approved external transaction-data matching** — Post-MVP. As a host, I want a permitted way to match an external gift to its sender and card so that duplicate names or aliases do not create false receipt claims.
+  - Document provider-by-provider personal/business eligibility, available API or approved import, consent/scopes, permitted transaction identifiers, costs and restrictions. Do not assume personal Cash App, Venmo or Zelle history is accessible.
+  - If an approved integration exists, design server-owned event/card/reference mapping with authenticated provider evidence, idempotency, ambiguous-match handling, correction and audit; a browser callback or guest report is not evidence.
+  - Retain known name, payment-app alias, optional amount/reference and manual host receipt review as the fallback. Do not collect credentials, financial screenshots or infer receipt from names alone.
+  - Get owner/provider approval before expanding from external directions to integrated payment processing; keep verified provider state separate from host-confirmed state.
 
 ### DCB-E07 Host dashboard, CardVault and event book
 
@@ -280,6 +289,7 @@ Release: October 2026 private MVP and follow-on. The host keeps private memories
   - Book includes only consented and unhidden entries.
   - A card with an attached photo counts as one entry.
   - Use book.entry_projection as rebuildable revisioned metadata; obtain content through Cards public contracts and recheck current consent/moderation before disclosure.
+  - Review editorial and collage spreads, a dedication/cover, photo compositions and a readable text mode; preserve complete long notes and remove hidden/nonconsented cards immediately.
   - **Blocked by:** DCB-E18-S03
 - **DCB-E07-S03 Export basic CardVault privately** — October 2026 private MVP. As a host, I want a basic export even if I never buy an upgrade so that my memories remain accessible.
   - Host can request export after closure.
@@ -332,6 +342,7 @@ Release: October 2026 private MVP and follow-on. Authentication, data boundaries
 - **DCB-E08-S08 Run mobile and accessibility checks** — October 2026 private MVP. As a guest, I want screens I can use on a phone or keyboard so that I can participate at an event.
   - Test focus order, labels, contrast and responsive layouts.
   - High priority blockers are fixed before supervised pilot.
+  - UI review includes axe WCAG 2.2 AA checks, keyboard skip and route focus, 320/375/768/1280 px reflow, opt-in/pausable GIF motion and real-device/manual assistive-technology review. Automated checks do not certify ADA compliance.
 
 ### DCB-E09 Supervised pilot and learning
 
@@ -433,6 +444,7 @@ Release: Post-MVP. Media enriches cards only when the specific distribution righ
 - **DCB-E12-S05 License art templates and GIFs** — Post-MVP. As a founder, I want approved assets so that generated and selected visuals can be displayed and retained.
   - Record creator, source, grant, territory, derivatives and export rights.
   - Reject unlicensed user-added popular media until a permitted route exists.
+  - Original project GIF stickers can support design review; approved third-party API attribution, content filtering, retention and event-book export rights must be resolved before catalog rollout.
 - **DCB-E12-S06 Keep media optional** — Post-MVP. As a guest, I want a complete static card so that licensing or media failures do not block my note or gift.
   - Manual no-song and no-GIF paths always work.
   - Media errors do not roll back accepted cards or gift intents.
@@ -487,6 +499,7 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 - **DCB-E15-S04 Expand GIF library safely** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to expand gif library safely so the product can expand when justified.
   - Use a licensed API/catalog and label attribution and allowed reuse.
   - Scope, pricing and release gate are documented before implementation.
+  - Provide searchable/paginated licensed GIF results with loading/empty/failure states, provider attribution and content filters; use static posters and explicit play/pause, preserve a no-GIF path, and handle removal/rights expiry without losing a note.
 
 ### DCB-E16 New gift rails and markets
 
@@ -512,6 +525,7 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 - **DCB-E17-S01 Build consent-safe analytics dashboard** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to build consent-safe analytics dashboard so the product can expand when justified.
   - Track funnel and spend without storing unnecessary message content.
   - Scope, pricing and release gate are documented before implementation.
+  - Administrator UI shows aggregate counts and feature health without private card text, destination identifiers or unverified revenue; device-only fictional stats remain distinct from production analytics.
 - **DCB-E17-S02 Automate retention and deletion requests** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to automate retention and deletion requests so the product can expand when justified.
   - Respect active event windows and lawful financial retention.
   - Scope, pricing and release gate are documented before implementation.
@@ -522,6 +536,11 @@ Release: Post-MVP. Assess evidence, vendor terms, cost and risk before schedulin
 - **DCB-E17-S04 Add scalability and recovery drills** — Post-MVP. As a user or operator of TheDigitalCardBox, I want to add scalability and recovery drills so the product can expand when justified.
   - Load test, restore, queued jobs and independent module health checks.
   - Scope, pricing and release gate are documented before implementation.
+- **DCB-E17-S05 Enforce feature controls on the server** — Post-MVP. As an authorized operator, I want scoped feature switches so that disabling a feature takes effect on all affected operations, not just the interface.
+  - Define scoped/default feature policy, reason, actor, timestamps, rollback and operator MFA/least privilege; deny client-supplied roles and write an audit trail.
+  - Recheck feature availability atomically on server mutations/jobs; disabled gifts, GIF selection, book delivery and new-event creation cannot be re-enabled through direct API calls.
+  - Preserve accepted cards and truthful gift states when features are disabled; keep administrator reads free of private content by default.
+  - The current local administrator switches are UI review only and are not production controls.
 
 ### DCB-E18 Database foundations and migrations
 
@@ -544,3 +563,24 @@ Release: October 2026 private MVP. A managed PostgreSQL foundation stores custom
   - Demonstrate concurrent same-key submission returns one resource, changed-body key reuse conflicts, rollback leaves no orphan outbox work, and crash/duplicate/out-of-order delivery cannot duplicate or regress a projection.
   - Domain stories own route/window/quota/consent/receipt checks using these primitives; backup stays DCB-E08-S05 and later provider-specific retry work stays DCB-E08-S06.
   - **Blocked by:** DCB-E18-S02
+
+### DCB-E19 Customer UI and owner design review
+
+Release: UI design review. The complete customer and operator page set can be reviewed without sign-in before backend integration; production gates remain open.
+
+- **DCB-E19-S01 Build customer discovery and account-free entry** — UI design review. As a visitor, I want intuitive occasion-led creation so that I can begin without understanding the app first.
+  - Use the current logo, fonts and palette for home, how it works, cards, pricing, about, contact, privacy, terms and accessibility pages; remove the public sample-site wording.
+  - Home creation choices retain occasion context through the planned Apple/Google/Amazon/email account screen, with an explicit no-sign-in route for design review.
+  - Include accurate contact draft behavior, copyright and footer navigation; no public guest-event entry or fabricated live service action.
+- **DCB-E19-S02 Build application routing and browser review state** — UI design review. As the business owner, I want all intended UI journeys connected using fictional records so that design choices can be tested before backend work.
+  - Cover host creation/details/share/QR/cards/gifts/book/settings/profile and invitation-only guest landing/composer/review/gift/thanks plus invalid, draft, paused, scheduled, closed and gift-only states.
+  - Direct URLs, refresh and Back/Forward work. Device state and per-invitation drafts survive supported refresh; errors and reset are visible. No sign-in, real event data, payment or provider credentials are needed.
+  - Record the browser adapter boundaries and future replacement with authorized server contracts; maintain all existing backend acceptance criteria and keep this release off production.
+- **DCB-E19-S03 Build administrator design-review pages** — UI design review. As an operator reviewing the design, I want a coherent administrative workspace so that I can evaluate feature controls and useful stats.
+  - Provide overview, feature switches, minimal event directory and activity history in the shared app theme.
+  - Local switches affect gift choices, GIF selection, writing prompts, book view and new-event creation. Existing accepted content is preserved.
+  - Explain device-only fictional access; production roles, MFA, server feature enforcement and analytics remain separate backlog work.
+- **DCB-E19-S04 Review the card and event-book art direction** — UI design review. As the business owner, I want an exceptional coherent keepsake design so that cards and books feel worth revisiting.
+  - Review six original vector card directions, actual note typography, optional photo/animated-sticker placements and responsive long-message handling.
+  - Compare editorial and collage book spreads, cover/dedication, consent filtering and accessible reading/print modes. Do not introduce a guest contribution cap or require a gift.
+  - Record owner choices and remaining polish before approval; keep issues open for the owner and do not infer design approval from automated tests.

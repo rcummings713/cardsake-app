@@ -21,7 +21,7 @@ The host creates an event or occasion page and shares a single link or QR. Guest
 
 ## Host event choices
 
-The host setup demo retains Wedding, Other dated event, and One-off occasion, and also offers:
+The host setup retains Wedding, Other dated event, and One-off occasion, and also offers:
 
 - Gender reveal parties
 - Sip and sees
@@ -38,11 +38,11 @@ The host setup demo retains Wedding, Other dated event, and One-off occasion, an
 - Bat Mitzvahs
 - Wakes / Celebrations of Life
 
-These additional choices use the existing dated, non-wedding lifecycle: contributions and gifts close at day 90. Wedding alone qualifies for gifts through month 12; bridal showers, bachelor/bachelorette parties, and rehearsal dinners do not inherit that extension. One-off occasion retains its bounded undated lifecycle. The selected event label appears in the demo setup summary and guest landing; wakes and celebrations of life use remembrance wording.
+These additional choices use the existing dated, non-wedding lifecycle: contributions and gifts close at day 90. Wedding alone qualifies for gifts through month 12; bridal showers, bachelor/bachelorette parties, and rehearsal dinners do not inherit that extension. One-off occasion retains its bounded undated lifecycle. The selected event label appears in setup and guest landing; wakes and celebrations of life use remembrance wording.
 
 ## Persistent customer, guest and gift records
 
-Production follows [DATA_MODEL.md](DATA_MODEL.md) and [ADR 0005](../adr/0005-database-design.md), with managed PostgreSQL and private photo/export storage. Registered customers represent hosts; anonymous guests are event-scoped and independent of expiring sessions. Cards, consent, destination versions, external gift intent/activity and host receipt marks persist independently. UI data remains sample-only.
+Production follows [DATA_MODEL.md](DATA_MODEL.md) and [ADR 0005](../adr/0005-database-design.md), with managed PostgreSQL and private photo/export storage. Registered customers represent hosts; anonymous guests are event-scoped and independent of expiring sessions. Cards, consent, destination versions, external gift intent/activity and host receipt marks persist independently. The current UI uses fictional records in device-local storage for account-free owner design review; production authorization and storage remain open. See [UI_DESIGN.md](UI_DESIGN.md) and [ADR 0007](../adr/0007-ui-first-design-review.md).
 
 External gift activity is not proof of a financial transaction. Future premium purchase transactions and approved integrated gift ledgers are separate Post-MVP contracts. Guest intake closure does not delete CardVault records; ongoing private access follows a published retention/deletion policy.
 
@@ -55,3 +55,7 @@ The $500 developer payment is a one-time, indefinitely fixed arrangement for pla
 ## Deployment environments
 
 [ADR 0006](../adr/0006-deployment-environments.md) separates the static UI's DEV feature previews, TEST develop/release deployments and owner-approved PROD deployments from master. The sole contributor can approve their own production deployment; no second-person review is required by this workflow. Each GitHub environment holds a distinct account-owned token with Editor access only to its matching existing Cloudflare Worker. No account-wide or domain-route access is required for the current static UI. Environment setup does not implement the production backend or waive the MVP release gates.
+
+## UI-first design review
+
+The customer interface now includes occasion-led creation and planned Apple/Google/Amazon/email account choices with a no-sign-in continuation, a host workspace, opaque invitation-only guest routes, original illustrated cards with optional local GIFs, editorial/collage book views and an in-app administrator workspace. No public event directory is offered. Feature switches and stats are local fictional review data; production roles, feature enforcement, provider transaction matching and licensed GIF search remain separate work. Known name, payment-app alias and an opaque reference assist host gift matching without verifying receipt. See planning/UI_REVIEW.md for decisions and the page map.

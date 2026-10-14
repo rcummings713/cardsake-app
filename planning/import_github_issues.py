@@ -42,6 +42,7 @@ def labels(repo):
         "release:october": "B60205", "release:post-mvp": "C2E0C6",
         "week:oct12": "C5DEF5", "week:oct19": "BFDADC", "week:oct26": "F9D0C4",
         "priority:p0": "B60205", "priority:p1": "FBCA04", "priority:p2": "C2E0C6",
+        "phase:ui": "D8B5A7", "release:ui-review": "EADCD9",
     }
     for label, color in colors.items():
         gh("label", "create", label, "--repo", repo, "--color", color, "--force")
@@ -65,7 +66,7 @@ def body(item, epic=None):
             parts += [f'**Target:** {item["target_date"]} America/New_York',
                       f'**Estimate:** {item["estimate_hours"]} focused developer hours']
         else:
-            parts += ["**Target:** Post-MVP; no date committed"]
+            parts += [f"**Target:** {item['release']}; no date committed"]
         parts += ["**Release:** " + item["release"], "**Priority:** " + item["priority"]]
         if item.get('depends_on'):
             parts += ["", "**Blocked by:** " + ", ".join(item['depends_on'])]
@@ -128,7 +129,7 @@ def main():
             print("Skip epic", e["id"], parent)
         else:
             tags = ["type:epic", f'phase:{e["phase"].lower()}',
-                    "release:october" if is_oct else "release:post-mvp"]
+                    "release:october" if is_oct else "release:ui-review" if e["phase"] == "UI" else "release:post-mvp"]
             parent, url = create(args.repo, "[Epic] " + e["title"], body(e), tags,
                                  october=is_oct)
             found[e["id"]] = parent
@@ -140,7 +141,7 @@ def main():
             is_oct = bool(s["target_date"])
             tags = ["type:story", f'phase:{e["phase"].lower()}',
                     f'priority:{s["priority"].lower()}',
-                    "release:october" if is_oct else "release:post-mvp"]
+                    "release:october" if is_oct else "release:ui-review" if e["phase"] == "UI" else "release:post-mvp"]
             if is_oct:
                 tags += [week(s["target_date"])]
             number, url = create(args.repo, f'[{s["id"]}] {s["title"]}',
