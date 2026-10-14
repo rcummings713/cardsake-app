@@ -28,8 +28,9 @@ Confirmed on 13 October 2026:
 
 - Home creation buttons show the planned account-choice screen, with an explicit
   **Continue without signing in** option for this account-free review.
-- Lead the event-book design with an **elegant editorial album with curated
-  collage spreads**. The Editorial is the default; The Collage remains available.
+- Offer **both** an elegant editorial album and a rich scrapbook with layered
+  notes and photos. The Editorial and The Collage are equal choices; each card
+  box remembers the host’s selected style on this device.
 
 The current UI already implements these starting choices. Detailed visual polish,
 real-device review and backend acceptance remain open; this does not close stories
@@ -37,7 +38,7 @@ or approve production deployment.
 
 ## Design decisions still open
 
-- Final cover/spread artwork and layout polish within the confirmed editorial direction.
+- Final cover/spread artwork and layout polish for both book directions.
 - Sign-in provider priority, managed identity provider and detailed account-screen polish.
 - Final production policy copy and retention promises; current notice describes
   only this device-based review build.
@@ -85,7 +86,7 @@ progress without removing backend acceptance criteria. No issues were closed.
 ## Verification
 
 - Production build, planning consistency and six deployment-routing tests pass.
-- Twelve browser journeys pass, including real photo validation, local drafts,
+- Thirteen browser journeys pass, including real photo validation, local drafts,
   guest-link states, consent and moderation filtering, editable writing choices,
   gift matching/receipt rules, feature switches and keyboard/reduced motion.
 - Axe checks report no violations for the selected WCAG 2.2 AA tags on the tested

@@ -357,3 +357,34 @@ test("scheduled and late-wedding invitation states offer only allowed actions", 
     page.getByRole("heading", { name: "A beautiful chapter, now complete." }),
   ).toBeVisible();
 });
+
+test("both book styles preserve the same consented cards and remember the event choice", async ({
+  page,
+}) => {
+  await page.goto(host + "/book");
+  await expect(
+    page.getByRole("button", { name: "The Editorial", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "The Collage", exact: true }).click();
+  await page.getByRole("button", { name: "Next →" }).click();
+  await expect(page.locator(".book-collage .keepsake-card")).toHaveCount(2);
+  await expect(page.locator(".book-spread")).toContainText("Jordan Lee");
+  await page.reload();
+  await expect(
+    page.getByRole("button", { name: "The Collage", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.goto(host + "/edit");
+  await page.getByRole("button", { name: "Save event details" }).click();
+  await page.goto(host + "/book");
+  await expect(
+    page.getByRole("button", { name: "The Collage", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page
+    .getByRole("button", { name: "The Editorial", exact: true })
+    .click();
+  await page.getByRole("button", { name: "Next →" }).click();
+  await expect(page.locator(".book-editorial .book-spread")).toContainText(
+    "Jordan Lee",
+  );
+  await expect(page.locator(".book-editorial .keepsake-card")).toHaveCount(0);
+});

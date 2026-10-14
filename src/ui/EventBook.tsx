@@ -5,8 +5,8 @@ import { Botanical, Card, Empty, Heading, Notice, download } from "./shared";
 import { useStore } from "./state";
 
 export function EventBook({ event }: { event: Occasion }) {
-  const { data, notify } = useStore();
-  const [layout, setLayout] = useState("editorial");
+  const { data, setData, notify } = useStore();
+  const layout = event.bookLayout || "editorial";
   const [spread, setSpread] = useState(0);
   const [reading, setReading] = useState(false);
   const entries = bookEntries(data, event.id);
@@ -29,17 +29,50 @@ export function EventBook({ event }: { event: Occasion }) {
         <p>Only cards whose senders agreed to book inclusion appear here.</p>
       </Heading>
       <div className="book-toolbar">
-        <div className="segmented" aria-label="Book layout">
-          {["editorial", "collage"].map((value) => (
-            <button
-              key={value}
-              aria-pressed={layout === value}
-              onClick={() => setLayout(value)}
-            >
-              {value === "editorial" ? "The Editorial" : "The Collage"}
-            </button>
-          ))}
-        </div>
+        <fieldset className="book-style-choices">
+          <legend>Choose your book style</legend>
+          <div className="book-style-options">
+            {(
+              [
+                {
+                  value: "editorial",
+                  name: "The Editorial",
+                  description:
+                    "An elegant album with airy typography and curated photo spreads.",
+                },
+                {
+                  value: "collage",
+                  name: "The Collage",
+                  description:
+                    "A rich scrapbook with layered cards, notes and photographs.",
+                },
+              ] as const
+            ).map((style) => (
+              <button
+                key={style.value}
+                className="book-style-option"
+                aria-label={style.name}
+                aria-describedby={`book-style-${style.value}`}
+                aria-pressed={layout === style.value}
+                onClick={() =>
+                  setData((d) => ({
+                    ...d,
+                    events: d.events.map((item) =>
+                      item.id === event.id
+                        ? { ...item, bookLayout: style.value }
+                        : item,
+                    ),
+                  }))
+                }
+              >
+                <strong>{style.name}</strong>
+                <span id={`book-style-${style.value}`}>
+                  {style.description}
+                </span>
+              </button>
+            ))}
+          </div>
+        </fieldset>
         <button
           className="secondary"
           onClick={() => setReading(!reading)}

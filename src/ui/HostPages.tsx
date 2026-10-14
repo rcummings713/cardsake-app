@@ -115,6 +115,7 @@ export function EventForm({ event }: { event?: Occasion }) {
       welcome: String(f.get("welcome")).trim(),
       cover: String(f.get("cover")),
       status: event?.status || "draft",
+      bookLayout: event?.bookLayout,
       destinations: event?.destinations || [],
     };
     setData((d) => ({

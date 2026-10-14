@@ -25,11 +25,12 @@ The event book starts with an editorial cover and dedication, followed by paired
 spreads with readable notes and photo compositions. A second collage layout
 places illustrated cards on paper-like spreads. Include a text-reading mode,
 previous/next controls, current spread, readable export and print view. Only
-currently consented and unhidden entries appear. The owner confirmed the elegant
-editorial album with curated collage spreads as the leading direction. The
-Editorial stays the default and The Collage remains available. Detailed artwork
-polish and actual device review remain open; automated checks do not certify
-visual quality.
+currently consented and unhidden entries appear. The owner confirmed both
+directions: an elegant editorial album and a rich scrapbook with layered notes
+and photos. Present The Editorial and The Collage as equal choices and remember
+the selected style per card box in the browser adapter. Changing event details
+must preserve that choice. Detailed artwork polish and actual device review
+remain open; automated checks do not certify visual quality.
 
 ## Account-free design review
 

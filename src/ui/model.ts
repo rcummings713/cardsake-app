@@ -23,6 +23,7 @@ export interface Occasion {
   welcome: string;
   status: "draft" | "published" | "paused";
   cover: string;
+  bookLayout?: "editorial" | "collage";
   destinations: Destination[];
 }
 export interface Entry {
