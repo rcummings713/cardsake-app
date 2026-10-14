@@ -43,6 +43,10 @@ clear **Continue without signing in** path. Provider buttons explain their
 unconnected state rather than simulate authentication. This is an intentional
 review affordance, not an account or access-control implementation.
 
+The review build sets noindex/nofollow/noarchive and same-origin referrers.
+These prevent ordinary indexing/referrer disclosure and are not authorization.
+Before public launch, make indexing policy route-specific on the server.
+
 Never put real customer data into this build. Client-side routes, role labels,
 UUID links, hidden navigation and local storage cannot protect private data.
 Production requires the server-side gates in SECURITY_PAYMENT.md and
