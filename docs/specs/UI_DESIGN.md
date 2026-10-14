@@ -25,8 +25,11 @@ The event book starts with an editorial cover and dedication, followed by paired
 spreads with readable notes and photo compositions. A second collage layout
 places illustrated cards on paper-like spreads. Include a text-reading mode,
 previous/next controls, current spread, readable export and print view. Only
-currently consented and unhidden entries appear. Owner art direction and actual
-device review remain open; automated checks do not certify visual quality.
+currently consented and unhidden entries appear. The owner confirmed the elegant
+editorial album with curated collage spreads as the leading direction. The
+Editorial stays the default and The Collage remains available. Detailed artwork
+polish and actual device review remain open; automated checks do not certify
+visual quality.
 
 ## Account-free design review
 
@@ -39,7 +42,8 @@ limit. No password or provider credential is collected. Public pages do not use
 the old sample-site banner or navigation.
 
 The entry screen shows planned Apple, Google, Amazon and email choices with a
-clear **Continue without signing in** path. Provider buttons explain their
+clear **Continue without signing in** path, as confirmed by the owner. Creation
+buttons retain this account-choice step before event setup. Provider buttons explain their
 unconnected state rather than simulate authentication. This is an intentional
 review affordance, not an account or access-control implementation.
 

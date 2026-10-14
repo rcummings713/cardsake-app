@@ -22,10 +22,23 @@ administrator review entry. No backend, identity or payment provider is connecte
 8. Use administrator switches, inspect unavailable states, and check small-screen,
    keyboard and reduced-motion behavior. Reset via Preferences when needed.
 
+## Confirmed owner choices
+
+Confirmed on 13 October 2026:
+
+- Home creation buttons show the planned account-choice screen, with an explicit
+  **Continue without signing in** option for this account-free review.
+- Lead the event-book design with an **elegant editorial album with curated
+  collage spreads**. The Editorial is the default; The Collage remains available.
+
+The current UI already implements these starting choices. Detailed visual polish,
+real-device review and backend acceptance remain open; this does not close stories
+or approve production deployment.
+
 ## Design decisions still open
 
-- Default book direction and final cover/spread art direction.
-- Sign-in provider priority, managed identity provider and final account screen.
+- Final cover/spread artwork and layout polish within the confirmed editorial direction.
+- Sign-in provider priority, managed identity provider and detailed account-screen polish.
 - Final production policy copy and retention promises; current notice describes
   only this device-based review build.
 - Whether original GIF stickers suffice or a licensed searchable provider is
